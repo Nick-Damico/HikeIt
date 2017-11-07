@@ -30,4 +30,8 @@ RSpec.describe Hike, type: :model do
   		)
   	expect(hike).to_not be_valid
   end
+
+  it 'is invalid without a date' do
+  	expect(build(:hike, hike_date: nil)).to_not be_valid
+  end
 end
