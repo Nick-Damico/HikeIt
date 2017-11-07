@@ -10,7 +10,9 @@ RSpec.describe User, type: :model do
   	expect(build(:user, email: nil)).to_not be_valid
   end
 
-  it "is invalid without a valid email (ex. user@example.com)"
+  it "is invalid without a valid email (ex. user@example.com)" do
+  	expect(build(:user, email: "happyhikerATexample.com")).to_not be_valid
+  end
 
   it "is invalid without a password"
 
