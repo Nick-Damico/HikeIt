@@ -4,7 +4,6 @@ FactoryBot.define do
   	# Faker::Omniauth.facebook
   	trail_name {Faker::Pokemon.name}
     email {Faker::Internet.email}
-    password {}
-
+    password "happyhappy"
   end
 end
