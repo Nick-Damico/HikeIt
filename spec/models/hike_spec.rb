@@ -19,4 +19,13 @@ RSpec.describe Hike, type: :model do
   		)
   	expect(hike).to_not be_valid
   end
+
+  it 'is invalid with a hike date before todays date' 
+
+  it 'is invalid with notes character count greater than 200' do
+  	hike = build(:hike,
+  		notes: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a larger."
+  		)
+  	expect(hike).to_not be_valid
+  end
 end
