@@ -1,5 +1,5 @@
 class Hike < ApplicationRecord
-	validates :title, :description, :presence => true
+	validates :title, :description, :hike_date, :presence => true
 	validates :description, :length => { :maximum => 390 }
 	validates :notes, :length => { :maximum => 200 }
 	validate :valid_hike_date
@@ -9,7 +9,7 @@ class Hike < ApplicationRecord
 	private 
 
 	def valid_hike_date		
-		if hike_date < Time.now
+		if !hike_date.nil? && hike_date < Time.now
 			errors.add(:hike_date, "date can't be in the past")
 		end
 	end
