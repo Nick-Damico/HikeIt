@@ -10,4 +10,6 @@ Rails.application.routes.draw do
 
   get 'static/contact'
 
+# HikeController
+
 end
