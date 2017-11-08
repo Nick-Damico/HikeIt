@@ -45,5 +45,6 @@ RSpec.describe Hike, type: :model do
       hike = Hike.reflect_on_association(:leader)
       expect(hike.macro).to eq(:belongs_to)
     end
+
   end
 end
