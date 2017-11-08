@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107152747) do
+ActiveRecord::Schema.define(version: 20171108013233) do
 
   create_table "hikes", force: :cascade do |t|
     t.string "title"
@@ -22,6 +22,34 @@ ActiveRecord::Schema.define(version: 20171107152747) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hiking_trail_id"], name: "index_hikes_on_hiking_trail_id"
+  end
+
+  create_table "hikes_users", id: false, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "hike_id", null: false
+    t.integer "user_id_id"
+    t.integer "hike_id_id"
+    t.index ["hike_id_id"], name: "index_hikes_users_on_hike_id_id"
+    t.index ["user_id_id"], name: "index_hikes_users_on_user_id_id"
+  end
+
+  create_table "hiking_trails", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.string "area"
+    t.float "distance"
+    t.float "elevation_gain"
+    t.integer "difficulty_rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "planned_hikes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "hike_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hike_id", "user_id"], name: "index_planned_hikes_on_hike_id_and_user_id"
   end
 
   create_table "users", force: :cascade do |t|
