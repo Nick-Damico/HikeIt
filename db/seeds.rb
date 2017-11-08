@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.create!(
+	trail_name: Faker::TwinPeaks.character,
+	email: "bob@twinpeaks.com",
+	password: "specialsecretpassword",
+	bio: Faker::TwinPeaks.quote,
+	location: 
+#=> "Black Lodge"
+
+
+	)
