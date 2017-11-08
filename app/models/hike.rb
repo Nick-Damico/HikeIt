@@ -3,6 +3,7 @@ class Hike < ApplicationRecord
 	has_many :planned_hikes
 	has_many :users, through: :planned_hikes
 	belongs_to :leader, :class_name => "User", :foreign_key => 'leader_id'
+	belongs_to :hiking_trail, optional: true
 	# Validations
 	validates :title, :description, :hike_date, :presence => true
 	validates :description, :length => { :maximum => 390 }
