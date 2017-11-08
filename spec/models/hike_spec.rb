@@ -34,4 +34,11 @@ RSpec.describe Hike, type: :model do
   it 'is invalid without a date' do
   	expect(build(:hike, hike_date: nil)).to_not be_valid
   end
+
+  describe 'association with Users' do
+    it 'has many Users' do
+      hike = Hike.reflect_on_association(:users)
+      expect(hike.macro).to eq(:has_many)
+    end
+  end
 end
