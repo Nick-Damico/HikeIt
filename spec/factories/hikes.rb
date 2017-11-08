@@ -9,4 +9,3 @@ FactoryBot.define do
     association :leader, :factory => :user
   end
 end
-# 2017-11-07
