@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :feature do
-    title "MyString"
+    title "Waterfalls"
   end
 end
