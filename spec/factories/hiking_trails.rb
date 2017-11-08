@@ -6,5 +6,6 @@ FactoryBot.define do
     distance 4.4
     elevation_gain 1125
     difficulty_rating 7
+    association :feature, :factory => :feature
   end
 end

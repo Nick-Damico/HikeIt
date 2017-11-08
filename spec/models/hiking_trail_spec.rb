@@ -39,8 +39,10 @@ RSpec.describe HikingTrail, type: :model do
 
   describe 'Associations' do
     before do 
+      @feature = build(:feature)
+      @feature.save
       @user = User.create(trail_name: 'Dreadful Rebel', email: "d_rebel@hikesmokies.com", password: "happyhiker20")         
-      @hiking_trail = HikingTrail.create(name: "Alum Caves Trail", location: "441 North", area: "Gatlinburg / New Found Gap Road", distance: "4.4")
+      @hiking_trail = HikingTrail.create(name: "Alum Caves Trail", location: "441 North", area: "Gatlinburg / New Found Gap Road", distance: "4.4", feature_id: @feature.id)
       @hike = Hike.create!(title: "Sunday Night Hike", description: "Our bi-weekly Sunday night hike will be to Chimmney Tops Trail.", hike_date: Time.new(2017,12,20), leader_id: @user.id, hiking_trail_id: @hiking_trail.id)
     end
 
