@@ -39,7 +39,7 @@ RSpec.describe User, type: :model do
 	  	expect(user.encrypted_password).to_not eq(user.password)
 	  end
 
-end
+	end
 
 	it "is invalid with trail_name that is not unique" do
 		user_1 = build(:user)
@@ -60,6 +60,13 @@ end
 			location: "Winchester-on-the-Severn1, Maryland"
 			)
 		expect(user).to_not be_valid
+	end
+	describe 'relationship to hikes' do
+		it 'has many hikes' do
+			user = User.reflect_on_association(:hikes)
+			expect(user.macro).to eq(:has_many)
+			
+		end
 	end
 
 end
