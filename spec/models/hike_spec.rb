@@ -35,10 +35,15 @@ RSpec.describe Hike, type: :model do
   	expect(build(:hike, hike_date: nil)).to_not be_valid
   end
 
-  describe 'association with Users' do
+  describe 'Associations' do
     it 'has many Users' do
       hike = Hike.reflect_on_association(:users)
       expect(hike.macro).to eq(:has_many)
+    end
+
+    it 'belongs to a leader' do
+      hike = Hike.reflect_on_association(:leader)
+      expect(hike.macro).to eq(:belongs_to)
     end
   end
 end

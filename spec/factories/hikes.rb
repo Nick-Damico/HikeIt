@@ -6,6 +6,7 @@ FactoryBot.define do
     hike_time nil
     notes "Its going to rain! Bring the right wet weather gear."
     hiking_trail_id nil
+    association :leader, :factory => :user
   end
 end
 # 2017-11-07
