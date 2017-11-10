@@ -3,6 +3,6 @@
 	<h2>Plan an Adventure Today!</h2>
 	<%= link_to "Get Started",  new_user_registration_path %>
 <% else %>
-	<button>Plan a Hike</button>
-	<button>Find a Hike</button>
+	<%= button_to "Plan Hike", new_hike_path, :method => :get %>
+	<%= button_to "Find Hike", hikes_path, :method => :get %>
 <% end %>
