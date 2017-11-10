@@ -19,7 +19,7 @@ class Hike < ApplicationRecord
 
 	def valid_hike_date		
 		if !hike_date.nil? && hike_date < Time.now
-			errors.add(:hike_date, "date can't be in the past")
+			errors.add(:hike_date, "can't be in the past")
 		end
 	end
 
