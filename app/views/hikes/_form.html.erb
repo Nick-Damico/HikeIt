@@ -1,5 +1,8 @@
+ 
+<%= render partial: 'hike-errors', locals: { hike: @hike } %>
 
 <%= form_for(hike) do |f| %>
+	<%= f.hidden_field :leader_id, :value => current_user.id %>
 	<div class="field">
 		<%= f.label :title %><br />
 		<%= f.text_field :title %>	
@@ -11,8 +14,8 @@
 	</div>
 
 	<div class="field">
-		<%= f.label :hiking_trail %><br />
-		<%= f.collection_select :hiking_trail, HikingTrail.all, :id, :name %>
+		<%= f.label :hiking_trail_id %><br />
+		<%= f.collection_select :hiking_trail_id, HikingTrail.all, :id, :name %>
 	</div>
 	
 	<div class="field">
@@ -22,7 +25,7 @@
 
 	<div class="field">
 		<%= f.label :hike_time %><br />
-		<%= time_select :hike_time, {:default => {:hour => '10', :minute => '30' }}, {ampm: true} %>
+		<%= f.time_select :hike_time %>
 	</div>
 
 	<div class="field">
