@@ -1,3 +1,8 @@
-<h1>Hike with friends old and new</h1>
-<h2>Plan an Adventure Today!</h2>
-<%= link_to "Get Started",  new_user_registration_path %>
+<% if !user_signed_in? %>
+	<h1>Hike with friends old and new</h1>
+	<h2>Plan an Adventure Today!</h2>
+	<%= link_to "Get Started",  new_user_registration_path %>
+<% else %>
+	<button>Plan a Hike</button>
+	<button>Find a Hike</button>
+<% end %>
