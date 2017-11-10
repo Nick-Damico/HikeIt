@@ -1,4 +1,5 @@
-class HikesController < ActionController::Base
+class HikesController < ApplicationController
+
 	def index
 		@hikes = Hike.all
 	end
