@@ -1,0 +1,24 @@
+<table>
+	<thead>
+		<th>Trail</th>
+		<th>Location</th>
+		<th>Area</th>
+		<th>Features</th>
+		<th>Miles(Round-Trip)</th>
+		<th>Elevation Gain</th>
+		<th>Difficulty Rating</th>
+	</thead>
+	<tbody>
+		<% hiking_trails.each do |ht| %>
+			<tr>
+				<td><%= link_to "#{ht.name}", ht.url %></td>
+				<td><%= ht.location %></td>
+				<td><%= ht.area %></td>
+				<td><%= ht.feature.title %></td>
+				<td><%= ht.distance %></td>
+				<td><%= ht.elevation_gain %></td>
+				<td><%= ht.difficulty_rating %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
