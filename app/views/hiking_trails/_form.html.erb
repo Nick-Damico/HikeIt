@@ -1,0 +1,53 @@
+<% if hiking_trail.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(hiking_trail.errors.count, "error") %>
+      prohibited this hike from being planned:
+    </h2>
+ 
+    <ul>
+    <% hiking_trail.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for(hiking_trail) do |f| %>
+	<div class="field">
+		<%= f.label :name %><br />
+		<%= f.text_field :name %>
+	</div>
+
+	<div class="field">
+		<%= f.label :location %><br />
+		<%= f.text_field :location %>	
+	</div>
+
+	<div class="field">
+		<%= f.label :area, "Choose the Hike Area" %><br />
+		<%= f.select :area, HikingTrail::TRAIL_AREAS %>
+	</div>
+
+	<div class="field">
+		<%= f.label :feature_id, "Choose feature for this trail" %><br />
+		<%= f.collection_select :feature_id, Feature.all, :id, :title %>
+	</div>
+
+	<div class="field">
+		<%= f.label :distance, "R/T in Miles" %><br />
+		<%= f.text_field :distance %>
+	</div>
+
+	<div class="field">
+		<%= f.label :elevation_gain, "Total Elev. Gain" %><br />
+		<%= f.text_field :elevation_gain %>
+	</div>
+
+	<div class="field">
+		<%= f.label :difficulty_rating, "Difficulty Rating: 0-5 easy, 10+ strenuous" %><br />
+		<%= f.select :difficulty_rating, (0..30) %>
+	</div>
+
+	<%= f.submit %>
+<% end %>
