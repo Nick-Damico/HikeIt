@@ -1,5 +1,6 @@
 class HikesController < ApplicationController
 	before_action :find_hike, only: [:show, :edit]
+	before_action :authenticate_user!, :except => [:show, :index]
 
 	def index
 		@hikes = Hike.all
@@ -33,7 +34,8 @@ class HikesController < ApplicationController
 					:hike_time,
 					:notes,
 					:leader_id,
-					:hiking_trail_id
+					:hiking_trail_id,
+					:hiking_trail_attributes => [:name, :location, :area, :distance]
 				)
 		end
 
