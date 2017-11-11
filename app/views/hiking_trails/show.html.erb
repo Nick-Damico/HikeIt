@@ -1,2 +1,23 @@
-<h1>HikeIt</h1>
-<h2>Plan an adventure today</h2>
+<h1>Hiking Trail Added!</h1>
+<table>
+	<thead>
+		<th>Trail</th>
+		<th>Location</th>
+		<th>Area</th>
+		<th>Features</th>
+		<th>Miles(Round-Trip)</th>
+		<th>Elevation Gain</th>
+		<th>Difficulty Rating</th>
+	</thead>
+	<tbody>
+		<tr>
+			<td><%= link_to "#{@hiking_trail.name}", @hiking_trail.url %></td>
+			<td><%= @hiking_trail.location %></td>
+			<td><%= @hiking_trail.area %></td>
+			<td><%= @hiking_trail.feature.title %></td>
+			<td><%= @hiking_trail.distance %></td>
+			<td><%= @hiking_trail.elevation_gain %></td>
+			<td><%= @hiking_trail.difficulty_rating %></td>
+		</tr>
+	</tbody>
+</table>
