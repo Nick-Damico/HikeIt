@@ -59,4 +59,19 @@ RSpec.describe HikingTrail, type: :model do
     end
   end
 
+  describe 'distance, difficulty_rating, elevation_gain' do
+    before do 
+      @feature = build(:feature)
+      @hiking_trail_1 = HikingTrail.create(name: "Alum Caves Trail", location: "441 North", area: "Sugarlands", distance: 2.0, elevation_gain: 1300.0, difficulty_rating: 7.5 )
+      @hiking_trail_1.feature = @feature
+      @hiking_trail_2 = HikingTrail.create(name: "Alum Caves Trail", location: "441 North", area: "Sugarlands", distance: "dont know", elevation_gain: "a lot", difficulty_rating: "hard" )
+      @hiking_trail_2.feature = @feature
+    end
+
+    it 'is valid with both float and integers' do
+      expect(@hiking_trail_1).to be_valid
+    end
+
+  end
+
 end
