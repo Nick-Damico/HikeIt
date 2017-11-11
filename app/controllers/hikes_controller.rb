@@ -1,5 +1,6 @@
 class HikesController < ApplicationController
-
+	#Before_action defined in ApplicationController
+	before_action :find_hike, only: [:show, :edit]
 	def index
 		@hikes = Hike.all
 	end
@@ -9,7 +10,9 @@ class HikesController < ApplicationController
 	end
 
 	def show
-		@hike = Hike.find_by(id: params[:id])
+	end
+
+	def edit		
 	end
 	
 	def create
@@ -32,6 +35,10 @@ class HikesController < ApplicationController
 					:leader_id,
 					:hiking_trail_id
 				)
+		end
+
+		def find_hike
+			@hike = Hike.find_by(by: params[:id])
 		end
 		
 end

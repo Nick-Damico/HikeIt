@@ -1,10 +1,11 @@
 class HikingTrailsController < ApplicationController
+  before_action :find_hiking_trail, :only => [:show, :edit]
+
   def index
   	@hiking_trails = HikingTrail.all
   end
 
-  def show
-    @hiking_trail = HikingTrail.find_by(id: params[:id])
+  def show    
   end
 
   def edit
@@ -34,5 +35,9 @@ class HikingTrailsController < ApplicationController
   			:difficulty_rating,
   			:feature_id
   		)
+  end
+
+  def find_hike_trail
+    @hiking_trail = HikingTrail.find_by(id: params[:id])
   end
 end
