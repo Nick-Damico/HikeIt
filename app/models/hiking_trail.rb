@@ -1,8 +1,13 @@
 class HikingTrail < ApplicationRecord
+	# Validations
 	validates :name, :location, :area, :distance, :presence => true
 	validates :name, :uniqueness => true
+	# Lifecycle callbacks
+	before_validation :rating_to_integer
+	# Associations
 	has_many :hikes
 	belongs_to :feature
+	
 
 	TRAIL_AREAS = [
 		"Gatlinburg / Mt. LeConte Area",
@@ -13,4 +18,11 @@ class HikingTrail < ApplicationRecord
 		"Greenbrier / Cosby Area",
 		"Balsam Mountain / Big Creek / Cataloochee / Fontana Lake"
 	]
+
+	def rating_to_integer
+		if self.difficulty_rating.class == Float
+			self.difficulty_rating = difficulty_rating.to_i
+		end
+	end
+
 end
