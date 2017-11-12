@@ -1,7 +1,8 @@
 class HikesController < ApplicationController
 	before_action :find_hike, only: [:show, :edit, :update]
 	before_action :authenticate_user!, :except => [:show, :index]
-	before_action :authenticate_for_edit, only: [:update]
+	before_action :authenticate_as_leader, only: [:edit, :update]
+
 	def index
 		@hikes = Hike.all
 	end
@@ -20,7 +21,6 @@ class HikesController < ApplicationController
 	end
 
 	def update	
-	binding.pry	
 		if @hike.update(hike_params)
 			redirect_to hike_path(@hike)
 		else
@@ -36,6 +36,11 @@ class HikesController < ApplicationController
 			render :new
 		end
 	end
+
+	def destroy
+   		@hike.destroy
+    	redirect_to people_url
+ 	end
 
 	private	
 		def hike_params
@@ -54,5 +59,9 @@ class HikesController < ApplicationController
 		def find_hike
 			@hike = Hike.find_by(id: params[:id])
 		end
+
+		def authenticate_as_leader
+  			redirect_to root_path if @hike.leader_id != current_user.id  				
+  		end
 		
 end
