@@ -34,11 +34,11 @@
 		<%= f.collection_select :feature_id, Feature.all, :id, :title, :include_blank => "Select a feature for your hiking trail" %>
 	</div>
 
-		<h5>Unable to find the right feature for your Hiking Trail? Add your own description below.</h5>
 
 	<% if hiking_trail.feature_id.nil? %>
 
 		<fieldset>
+		<legend>Unable to find the right feature for your Hiking Trail? Add your own description below.</legend>
 			<div class="field">
 				<%= f.fields_for(:feature, hiking_trail.build_feature)do |ht_builder| %>
 					<%= ht_builder.label :title, "Feature description" %><br />
