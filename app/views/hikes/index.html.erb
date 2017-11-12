@@ -5,3 +5,24 @@
 
 <h3>All Hikes Planned</h3>
 <!-- All planned hikes  -->
+
+<% @hikes.each do |hike| %>
+	<div class="planned_hike">
+		<h3><%= hike.title %></h3>
+		<h4><%= hike.leader.email %></h4>
+		<ul>
+			Details
+			<li><%= link_to "#{hike.hiking_trail.name}", hiking_trail_path(hike.hiking_trail) %></li>
+			<li><%= hike.description %></li>
+			<li><%= hike.hike_date %> - <%= hike.hike_time %></li>
+		</ul>
+		<%= form_tag join_path(hike) do %>
+			<% if hike.users.include?(current_user) || hike.leader == current_user %>
+				<span><b>You've Joined this Hike</b></span>
+			<% else %>
+				<%= submit_tag "Join" %>
+			<% end %>
+		<% end %>
+	</div>
+	<hr>
+<% end %>
