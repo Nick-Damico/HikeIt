@@ -21,7 +21,7 @@ class HikesController < ApplicationController
 		if @hike.update(hike_params)
 			redirect_to hike_path(@hike)
 		else
-			render :show
+			render :edit
 		end
 	end
 	
@@ -36,7 +36,7 @@ class HikesController < ApplicationController
 
 	def destroy
    		@hike.destroy
-    	redirect_to people_url
+    	redirect_to root_path
  	end
 
 	private	
