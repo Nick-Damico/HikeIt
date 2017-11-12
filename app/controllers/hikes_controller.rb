@@ -35,7 +35,7 @@ class HikesController < ApplicationController
 					:notes,
 					:leader_id,
 					:hiking_trail_id,
-					:hiking_trail_attributes => [:name, :location, :area, :distance]
+					:hiking_trail_attributes => [:name, :location, :area, :distance, :feature_id]
 				)
 		end
 

@@ -13,13 +13,15 @@
 		<%= f.text_field :description %>
 	</div>
 
+	<h5>You can only choose One Hiking Trail for this hike, select an existing trails above or define make your own below.</h5>
+
 	<div class="field">
 		<%= f.label :hiking_trail_id %><br />
 		<%= f.collection_select :hiking_trail_id, HikingTrail.all, :id, :name, :include_blank => "Pick the Perfect Trail for your Adventure" %>
 	</div>
 
 	<div class="field">
-		Can't find the right one? Add your own below.
+		<h6>Didn't Find one you like? Make your own below!</h6>
 		<fieldset>
 			<legend>Hiking Trail</legend>
 			<%= f.fields_for :hiking_trail, @hike.build_hiking_trail do |ht_builder| %>
@@ -36,6 +38,11 @@
 				<div class="field">
 					<%= ht_builder.label :area, "Choose the Hike Area" %><br />
 					<%= ht_builder.select :area, HikingTrail::TRAIL_AREAS %>
+				</div>
+
+				<div class="field">
+					<%= ht_builder.label :feature_id, "Choose feature for this trail" %><br />
+					<%= ht_builder.collection_select :feature_id, Feature.all, :id, :title %>
 				</div>
 
 				<div class="field">

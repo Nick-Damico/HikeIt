@@ -9,11 +9,18 @@ class Hike < ApplicationRecord
 	validates :description, :length => { :maximum => 390 }
 	validates :notes, :length => { :maximum => 200 }
 	validate :valid_hike_date
-	# Will need future validations and test to check for belong_to :user(leader),
-		# Also test for belong_to relationship with hiking_trail
 	# Lifecycle callbacks
 	before_save :format_date
 	
+	def hiking_trail_attributes=(hiking_trail_attributes)
+		if !hiking_trail_attributes.empty?			
+			h_t = HikingTrail.find_or_create_by(name: hiking_trail_attributes[:name])			
+			if h_t
+				h_t.update(hiking_trail_attributes)
+				self.hiking_trail_id = h_t.id
+			end
+		end
+	end
 
 	private 
 
