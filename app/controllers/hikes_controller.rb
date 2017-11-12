@@ -1,5 +1,5 @@
 class HikesController < ApplicationController
-	before_action :find_hike, only: [:show, :edit, :update]
+	before_action :find_hike, only: [:show, :edit, :update, :join]
 	before_action :authenticate_user!, :except => [:show, :index]
 	before_action :authenticate_as_leader, only: [:edit, :update]
 
@@ -9,6 +9,13 @@ class HikesController < ApplicationController
 
 	def new		
 		@hike = Hike.new
+	end
+
+	def join
+		if !@hike.users.include?(current_user)
+				@hike.users << current_user
+		end
+		redirect_to users_path(current_user)
 	end
 
 	def show
@@ -27,6 +34,7 @@ class HikesController < ApplicationController
 	
 	def create
 		@hike = Hike.new(hike_params)
+		@hike.hiking_trail = HikingTrail.find_or_create_by(id: params[:hike][:hiking_trail_id]) if @hike.hiking_trail_id.nil?
 		if @hike.save
 			redirect_to hike_path(@hike.id)
 		else
