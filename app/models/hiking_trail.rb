@@ -8,7 +8,6 @@ class HikingTrail < ApplicationRecord
 	has_many :hikes
 	belongs_to :feature
 	
-
 	TRAIL_AREAS = [
 		"Gatlinburg / Mt. LeConte Area",
 		"Newfound Gap / Clingmans Dome Area",
