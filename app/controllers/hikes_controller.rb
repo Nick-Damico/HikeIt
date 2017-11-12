@@ -1,19 +1,31 @@
 class HikesController < ApplicationController
-	before_action :find_hike, only: [:show, :edit]
+	before_action :find_hike, only: [:show, :edit, :update]
 	before_action :authenticate_user!, :except => [:show, :index]
-
+	before_action :authenticate_for_edit, only: [:update]
 	def index
 		@hikes = Hike.all
 	end
 
-	def new
+	def new		
 		@hike = Hike.new
 	end
 
 	def show
+
 	end
 
-	def edit		
+	def edit	
+
+		
+	end
+
+	def update	
+	binding.pry	
+		if @hike.update(hike_params)
+			redirect_to hike_path(@hike)
+		else
+			render :show
+		end
 	end
 	
 	def create
