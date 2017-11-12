@@ -1,15 +1,14 @@
 class HikingTrailsController < ApplicationController
   before_action :find_hiking_trail, :only => [:show, :edit]
   before_action :authenticate_user!, :except => [:show, :index]
+  # before_action :authenticate_admin!, :except => [:show, :index]
 
   def index
   	@hiking_trails = HikingTrail.all
   end
 
-  def show    
-  end
-
-  def edit
+  def show  
+  
   end
 
   def new
@@ -25,6 +24,23 @@ class HikingTrailsController < ApplicationController
     end
   end
 
+
+  def edit
+  end
+
+  def update  
+    if @hiking_trail.update(hiking_trail_params)
+      redirect_to hiking_trail_path(@hiking_trail)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+      @hiking_trail.destroy
+      redirect_to root_path
+  end
+
   private
   def hiking_trail_params
   	params.require(:hiking_trail).permit(
@@ -34,11 +50,12 @@ class HikingTrailsController < ApplicationController
   			:distance,
   			:elevation_gain,
   			:difficulty_rating,
-  			:feature_id
+  			:feature_id,
+        :feature_attributes => [:title]
   		)
   end
 
-  def find_hike_trail
+  def find_hiking_trail
     @hiking_trail = HikingTrail.find_by(id: params[:id])
   end
 end
