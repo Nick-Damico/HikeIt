@@ -31,8 +31,19 @@
 
 	<div class="field">
 		<%= f.label :feature_id, "Choose feature for this trail" %><br />
-		<%= f.collection_select :feature_id, Feature.all, :id, :title %>
+		<%= f.collection_select :feature_id, Feature.all, :id, :title, :include_blank => "Select a feature for your hiking trail" %>
 	</div>
+	
+		<h5>Unable to find the right feature for your Hiking Trail? Add your own description below.</h5>
+
+	<fieldset>
+		<div class="field">
+			<%= f.fields_for(:feature, hiking_trail.build_feature)do |ht_builder| %>
+				<%= ht_builder.label :title, "Feature description" %><br />
+				<%= ht_builder.text_field :title %>
+			<% end %>
+		</div>
+	</fieldset>
 
 	<div class="field">
 		<%= f.label :distance, "R/T in Miles" %><br />
