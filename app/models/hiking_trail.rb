@@ -24,4 +24,14 @@ class HikingTrail < ApplicationRecord
 		end
 	end
 
+	def feature_attributes=(feature_attributes)
+		if !feature_attributes.empty?
+			feature = Feature.find_or_create_by(title: feature_attributes[:title])
+			if feature
+				feature.update(feature_attributes)
+				self.feature_id = feature.id
+			end
+		end		
+	end
+	
 end
