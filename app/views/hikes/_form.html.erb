@@ -38,12 +38,12 @@
 
 					<div class="field">
 						<%= ht_builder.label :area, "Choose the Hike Area" %><br />
-						<%= ht_builder.select :area, HikingTrail::TRAIL_AREAS %>
+						<%= ht_builder.select :area, HikingTrail::TRAIL_AREAS, :include_blank => "Hiking Areas of GSMNP" %>
 					</div>
 
 					<div class="field">
 						<%= ht_builder.label :feature_id, "Choose feature for this trail" %><br />
-						<%= ht_builder.collection_select :feature_id, Feature.all, :id, :title %>
+						<%= ht_builder.collection_select :feature_id, Feature.all, :id, :title, :include_blank => "GSMNP Features" %>
 					</div>
 
 					<div class="field">
