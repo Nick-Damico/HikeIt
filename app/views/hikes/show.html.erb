@@ -3,3 +3,17 @@
 <h3><%= @hike.title %></h3>
 
 <span><%= @hike.hike_date %></span>
+
+<%= form_tag join_path(@hike) do %>
+	<% if @hike.users.include?(current_user) || @hike.leader == current_user %>
+		<span><b>You've Joined this Hike</b></span>
+	<% else %>
+		<%= submit_tag "Join" %>
+	<% end %>
+<% end %>
+
+<%= form_tag leave_path(@hike) do %>
+	<% if @hike.users.include?(current_user) && @hike.leader != current_user %>
+		<%= submit_tag "Leave Hike" %>
+	<% end %>
+<% end %>
