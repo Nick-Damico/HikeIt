@@ -1,0 +1,24 @@
+<h1><%= current_user.trail_name if current_user.trail_name %></h1>
+
+<h2>Email: <%= current_user.email %></h2>
+
+
+<h3>Hikes you've Planned.</h3>
+	<% current_user.planned_hikes.each do |hike| %>
+		<ul>
+			<strong><%= link_to "#{hike.title}", hike_path(hike) %></strong>
+			<li>Description: <%= hike.description %></li>
+			<li><%= hike.hike_date %></li>
+		</ul>
+	<% end %>
+
+
+
+<h3>Hikes you've joined.</h3>
+	<% current_user.hikes.each do |hike| %>
+		<ul>
+			<strong><%= link_to "#{hike.title}", hike_path(hike) %></strong>
+			<li>Description: <%= hike.description %></li>
+			<li><%= hike.hike_date %></li>
+		</ul>
+	<% end %>
