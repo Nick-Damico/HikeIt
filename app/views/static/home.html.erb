@@ -2,6 +2,7 @@
 	<h1>Hike with friends old and new</h1>
 	<h2>Plan an Adventure Today!</h2>
 	<%= link_to "Get Started",  new_user_registration_path %>
+	 <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
 <% else %>
 	<%= button_to "Plan Hike", new_hike_path, :method => :get %>
 	<%= button_to "Find Hike", hikes_path, :method => :get %>

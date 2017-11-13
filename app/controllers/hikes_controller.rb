@@ -14,6 +14,7 @@ class HikesController < ApplicationController
 	def join
 		if !@hike.users.include?(current_user)
 				@hike.users << current_user
+				flash[:notice] = "You've joined #{@hike.title}."
 		end
 		redirect_to users_show_path
 	end
