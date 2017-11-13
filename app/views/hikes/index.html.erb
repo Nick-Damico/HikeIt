@@ -8,7 +8,7 @@
 
 <% @hikes.each do |hike| %>
 	<div class="planned_hike">
-		<h3><%= hike.title %></h3>
+		<h3><%= link_to "#{hike.title}", hike_path(hike) %></h3>
 		<h4><%= hike.leader.email %></h4>
 		<ul>
 			Details
