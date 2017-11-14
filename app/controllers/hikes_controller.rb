@@ -15,7 +15,21 @@ class HikesController < ApplicationController
 	end
 
 	def new		
-		@hike = Hike.new
+		if @user = User.find_by(id: params[:user_id])
+			@hike = @user.hikes.build(leader_id: @user.id)
+		else
+			@hike = Hike.new
+		end
+	end
+
+	def create
+		@hike = Hike.new(hike_params)
+		@hike.hiking_trail = HikingTrail.find_or_create_by(id: params[:hike][:hiking_trail_id]) if @hike.hiking_trail_id.nil?
+		if @hike.save
+			redirect_to hike_path(@hike.id), notice: "Hike successfully created!"
+		else
+			render :new
+		end
 	end
 
 	def join
@@ -52,16 +66,6 @@ class HikesController < ApplicationController
 			redirect_to hike_path(@hike)
 		else
 			render :edit
-		end
-	end
-	
-	def create
-		@hike = Hike.new(hike_params)
-		@hike.hiking_trail = HikingTrail.find_or_create_by(id: params[:hike][:hiking_trail_id]) if @hike.hiking_trail_id.nil?
-		if @hike.save
-			redirect_to hike_path(@hike.id)
-		else
-			render :new
 		end
 	end
 
