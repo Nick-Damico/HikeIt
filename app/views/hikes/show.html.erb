@@ -1,5 +1,5 @@
 <h2>Your Upcoming Hike</h2>
-<img src="<%= @hike.hiking_trail.image_url %>" />
+<img src="<%= @hike.hiking_trail.image_url if @hike.hiking_trail.image_url %>" />
 <h2>To: <%= @hike.hiking_trail.name %></h2>
 
 <h3><%= @hike.title %></h3>
