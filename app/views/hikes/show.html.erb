@@ -1,8 +1,12 @@
 <h2>Your Upcoming Hike</h2>
+<img src="<%= @hike.hiking_trail.image_url %>" />
+<h2>To: <%= @hike.hiking_trail.name %></h2>
 
 <h3><%= @hike.title %></h3>
 
 <span><%= @hike.hike_date %></span>
+
+
 
 <%= form_tag join_path(@hike) do %>
 	<% if @hike.users.include?(current_user) || @hike.leader == current_user %>
