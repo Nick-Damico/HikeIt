@@ -9,8 +9,7 @@ class Hike < ApplicationRecord
 	validates :description, :length => { :maximum => 390 }
 	validates :notes, :length => { :maximum => 200 }
 	validate :valid_hike_date
-	# Lifecycle callbacks
-	before_save :format_date
+	# Scope Methods
 	
 	def hiking_trail_attributes=(hiking_trail_attributes)
 		if !hiking_trail_attributes.empty?			
@@ -33,4 +32,5 @@ class Hike < ApplicationRecord
 	def format_date
 		self.hike_date = hike_date.strftime("%B %d, %Y")
 	end
+
 end
