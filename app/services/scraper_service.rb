@@ -4,7 +4,7 @@ class ScraperService
 
 	attr_accessor :url, :doc
 
-	def initialize(url)	
+	def initialize(url = nil)	
 		@url = url
 	end
 
@@ -43,6 +43,19 @@ class ScraperService
 				ht.save
 			end
 			
+		end
+	end
+
+	def get_image_from_url
+		hiking_trails_all = HikingTrail.all
+		hiking_trails_all.each do |trail|
+			
+			if trail.url && trail.image_url.nil?
+				doc = Nokogiri::HTML(open(trail.url))
+				src = doc.css('h1 + table img').attribute('src').text.split("..").last
+				trail.image_url = "http://www.hikinginthesmokys.com" + src
+				trail.save
+			end
 		end
 	end
 
