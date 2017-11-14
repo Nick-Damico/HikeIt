@@ -4,7 +4,14 @@ class HikesController < ApplicationController
 	before_action :authenticate_as_leader, only: [:edit, :update]
 
 	def index
-		@hikes = Hike.all
+		if params[:user_id]
+			@hikes = User.find(params[:user_id]).hikes
+			if hikes_lead = Hike.all.find_by(leader_id: params[:user_id])
+				@hikes <<  hikes_lead 
+			end
+		else
+			@hikes = Hike.all
+		end		
 	end
 
 	def new		
@@ -28,6 +35,13 @@ class HikesController < ApplicationController
 	end
 
 	def show
+		if params[:user_id]
+			@user = User.find_by(id: params[:user_id])
+			@hike = @user.hikes.find_by(id: params[:id]) 
+			if @hike.nil?
+				redirect_to user_hikes_path(@user), alert: "Hike not found"
+			end
+		end
 	end
 
 	def edit	
