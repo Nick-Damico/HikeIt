@@ -7,6 +7,9 @@ class HikingTrail < ApplicationRecord
 	# Associations
 	has_many :hikes
 	belongs_to :feature
+	# Scope Methods
+	scope :by_distance -> { order(:distance) }
+	scope :by_alphabet, -> { order(:name) }
 	
 	TRAIL_AREAS = [
 		"Gatlinburg / Mt. LeConte Area",
@@ -33,5 +36,5 @@ class HikingTrail < ApplicationRecord
 			end
 		end		
 	end
-	
+
 end
