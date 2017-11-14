@@ -1,23 +1,23 @@
 Rails.application.routes.draw do
   get 'users/show'
 
-	resources :hiking_trails
-	resources :hikes
+  	devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
+  	resources :user do
+  		resources :hikes, only: [:index, :show, :new]
+  	end
+
+	resources :hiking_trails
+
+	# HikeController
+	resources :hikes
 	post 'hikes/:id/join', :to => 'hikes#join', :as => 'join'
 	post 'hikes/:id/leave', :to => 'hikes#leave', :as => 'leave'
-	devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 	# StaticController
 	root 'static#home'
-
 	get 'static/home'
-
 	get 'static/about'
-
 	get 'static/contact'
-
-	# HikeController
 
 end
