@@ -3,5 +3,6 @@
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+ <span>Sign in with </span><%= link_to "Facebook", user_facebook_omniauth_authorize_path %><br />
   <span>Don't have an accout?</span><%= link_to "Sign up", new_registration_path(resource_name) %><br />
 <% end -%>
