@@ -8,7 +8,7 @@ class HikingTrail < ApplicationRecord
 	has_many :hikes
 	belongs_to :feature
 	# Scope Methods
-	scope :by_distance -> { order(:distance) }
+	scope :by_distance, -> { order(:distance) }
 	scope :by_alphabet, -> { order(:name) }
 	
 	TRAIL_AREAS = [
