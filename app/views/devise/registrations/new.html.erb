@@ -1,36 +1,41 @@
+<div class="row">
+  <h2 class="text-white col-lg-8 col-xs text-shadow about-text-sign_in">Create a free HikeIt account to plan a hike with your friends or join a hike. Meet new friends enjoy the outdoors.</h2>
+</div>
 
-<h2>Get out there. Have an Adventure.</h2>
-<h4>Create a free HikeIt account to plan a hike with your friends, or join a hike and meet new friends all while enjoy the GSMNP.</h4>
+<div class="row">
+  <div class="col-lg-8 col-xs">
+  <%= form_for(resource, :html => { class: 'sign_in-form rounded p-3 box-shadow' }, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+    <h1 class="p-2 col-xs col-md-4 offset-md-4 text-center text-white sign_in-logo">HikeIt</h1>
+    <h3 class="text-white">Get out there. Have an Adventure.</h3>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+    <div class="field">
+      <%= f.label :trail_name, :class => "text-white" %><br />
+      <%= f.text_field :trail_name, :class => "input-field" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :trail_name %><br />
-    <%= f.text_field :trail_name %>
+    <div class="field"> 
+      <%= f.label :email, :class => "text-white" %><br />
+      <%= f.email_field :email, autofocus: true, :class => "input-field" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password, :class => "text-white" %>
+      <% if @minimum_password_length %>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "off", :class => "input-field", :placeholder => "min. 6 characters" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation, :class => "text-white" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off", :class => "input-field" %>
+    </div>
+
+    <div class="actions mt-2 mb-2">
+      <%= f.submit "Create Account", :class => "btn btn-success form-inline" %>
+      <%= render "devise/shared/links" %>
+    </div>
+  <% end %>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Create Account" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
