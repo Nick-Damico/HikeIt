@@ -1,9 +1,11 @@
-<h1><%= link_to "HikeIt", root_path %></h1>
+<h1 class="navbar-brand mb-0 h1"><%= link_to "HikeIt", root_path, :class => "text-white logo-text btn-outline-light btn" %></h1>
+
 <% if user_signed_in? %>
   <li>Signed in as <%= current_user.email %></li>
-  <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete, :class => "navbar-brand mb-0 h1"%>
 <% else %>
-  
-  <li><%= link_to "Sign up", new_user_registration_path %></li>
-  	<li><%= link_to "Log in", new_user_session_path %></li>
+<nav class="navbar navbar-landing justify-content-between">
+  	<%= button_to "Sign up", new_user_registration_path, :method => :get, :class => "btn btn-color-sign_up form-inline" %>
+  	<%= button_to "Log in", new_user_session_path, :class => "btn btn-color-login_in form-inline ml-2" %>
+  </nav>
 <% end %>
