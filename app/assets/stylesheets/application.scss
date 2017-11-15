@@ -72,6 +72,7 @@ html,body {
 
 .logo-text:hover { background-color: rgba(255,255,255, .2) }
 
+.display-4-md { font-size: 3rem; }
 
 .sign_in-form { background-color: rgba(241,187,88, .4) }
 
@@ -96,7 +97,10 @@ html,body {
 
 	body { background-position-x: 19%; }
 
-	.about-text-sign_in { font-size: 1.2rem; }
+	.about-text-sign_in,
+	.about-text-login {
+		font-size: 1.2rem; 
+	}
 
 	
  }
