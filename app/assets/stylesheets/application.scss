@@ -1,4 +1,41 @@
 @import "bootstrap";
+@import "hiking_trails";
+
+body {
+	background: url('bg-app.jpg') no-repeat;
+	background-size: cover;
+}
+
+html,
+body { height: 100%;}
+.logo-text { font-size: 1.5rem }
+.text-shadow { 
+	text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+             0px 8px 13px rgba(0,0,0,0.1),
+             0px 18px 23px rgba(0,0,0,0.1);
+         }
+.lead-h2 { font-size: 1.9rem }
+
+.btn.logo-text::hover { color: black; }
+.btn-color-sign_up,
+.btn-color-login_in {
+	color: white;
+	transition: background-color 0.15s ease-in-out,
+				border-color 0.15s ease-in-out,
+				box-shadow 0.15s ease-in-out,
+				-webkit-box-shadow 0.15s ease-in-out;
+}
+.btn-color-sign_up:hover,
+.btn-color-login_in:hover { background-color: rgba(87,191,202, .8);} 
+.btn-color-sign_up {
+	background-color: #57bfca;
+	border-color: #57bfca;
+}
+.btn-color-login_in {
+	background-color: #ff6a00;
+	border-color: #ff6a00;
+}
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -11,6 +48,4 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
