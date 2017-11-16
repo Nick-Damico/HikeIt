@@ -1,8 +1,13 @@
-<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
-<% end -%>
+
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
- <span>Sign in with </span><%= link_to "Facebook", user_facebook_omniauth_authorize_path %><br />
-  <span>Don't have an accout?</span><%= link_to "Sign up", new_registration_path(resource_name) %><br />
+	
+	<div class="row">
+		<div class="col-lg-9">
+ 			<%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, :class => "btn btn-sign_in-facebook text-white w-100 rounded-0" %><br />
+	 	</div>
+	 </div>
+ 			<!-- new_registraion_path(signup) -->
 <% end -%>
+
+
