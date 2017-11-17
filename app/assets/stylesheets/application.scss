@@ -11,9 +11,15 @@
 //	BASE STYLES
 // =============================================
 
+// style for views :landing, :login, :singup
 body.landing-login-signup {
 	background: url('bg-app.jpg') no-repeat;
 	background-size: cover;
+}
+
+// style for views once User is authenticated
+body.application-layout {
+	background: black;
 }
 
 html,body {
@@ -76,10 +82,7 @@ html,body {
 
 .btn-sign_in-facebook { background-color: rgba(3, 169, 244, 1) }
 
-
-.sign_in-form { background-color: rgba(241,187,88, .4) }
-
-
+.btn-sign_out { background-color: rgba(229,9,20,1) }
 
 
 // =============================================
@@ -98,6 +101,10 @@ html,body {
 	font-weight: 200
 }
 
+.sign_in-form { background-color: rgba(241,187,88, .4) }
+
+
+
 
 
 
@@ -109,6 +116,7 @@ html,body {
 .w-75 { width: 75% }
 .w-50 { width: 50% }
 
+.no-style { list-style: none; }
 
 
 

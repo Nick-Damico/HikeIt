@@ -1,8 +1,8 @@
 <h1 class="navbar-brand mb-0 h1"><%= link_to "HikeIt", root_path, :class => "text-white logo-text btn-outline-light btn" %></h1>
 
 <% if user_signed_in? %>
-	<li>Signed in as <%= current_user.email %></li>
-		<%= button_to "Sign out", destroy_user_session_path, method: :delete, :class => "navbar-brand mb-0 h1"%>
+	<li class="lead text-white no-style">Signed in as <%= current_user.email %></li>
+		<%= button_to "Sign out", destroy_user_session_path, method: :delete, :class => "btn btn-sign_out text-white"%>
 <% else %>
 	<nav class="navbar navbar-landing justify-content-between">
 		<%= button_to "Sign up", new_user_registration_path, :method => :get, :class => "btn btn-color-sign_up form-inline" %>
