@@ -1,28 +1,38 @@
-<h1>Join a Hike and start your Adventure.</h1>
+<div class="row text-center">
+	<h1 class="p-2 col text-white display-4 font-w-100">Join a Hike and start your Adventure.</h1>
+</div>
 
-<h3>Upcoming Hikes</h3>
-<!-- Hikes happening in the next (3) days -->
+	
+<div class="row text-white justify-content-around index-hike-card-container rounded">
+	<% @hikes.each do |hike| %>
 
-<h3>All Hikes Planned</h3>
-<!-- All planned hikes  -->
+		<div class="col-10 col-sm-5 col-md-4 col-lg-3 border border-dark slow-grow hike-card mb-4 p-1 color bg-grey-red">
 
-<% @hikes.each do |hike| %>
-	<div class="planned_hike">
-		<h3><%= link_to "#{hike.title}", hike_path(hike) %></h3>
-		<h4><%= hike.leader.email %></h4>
-		<ul>
-			Details
-			<li><%= link_to "#{hike.hiking_trail.name}", hiking_trail_path(hike.hiking_trail) %></li>
-			<li><%= hike.description %></li>
-			<li><%= hike.hike_date %> - <%= hike.hike_time %></li>
-		</ul>
-		<%= form_tag join_path(hike) do %>
-			<% if hike.users.include?(current_user) || hike.leader == current_user %>
-				<span><b>You've Joined this Hike</b></span>
+			<% if hike.hiking_trail.image_url %>
+				<%= image_tag "#{hike.hiking_trail.image_url}", :class => "img-fluid w-100 card-img" %>
 			<% else %>
-				<%= submit_tag "Join" %>
+				<%= image_tag "btn-find-hike", :options => { :size => "280x200" }, :class => "img-fluid card-img w-100" %>
 			<% end %>
-		<% end %>
-	</div>
-	<hr>
-<% end %>
+
+				<%= form_tag join_path(hike) do %>
+					<% if hike.users.include?(current_user) || hike.leader == current_user %>
+						<span class="btn card-btn btn-color-login rounded-0 w-75">You've Joined</span>
+
+					<% else %>
+						<%= submit_tag "Join", :class => "card-btn btn btn-login-form text-white rounded-0 w-50" %>
+					<% end %>
+				<% end %>
+			
+			<div class="col">
+				<h3><%= link_to "#{hike.title}", hike_path(hike), :class => "font-w-300 color-burnt-orange" %></h3>
+				<h4 class="text-white font-w-100"><%= "#{hike.hiking_trail.name}" %></h4>
+				<ul class="no-style pl-0 font-w-100 color-slight-pink">
+					
+					<li><%= hike.description %></li>
+					<li><%= hike.format_date %></li>
+				</ul>
+				
+			</div>
+		</div>
+	<% end %>
+</div>

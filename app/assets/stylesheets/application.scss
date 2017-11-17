@@ -59,6 +59,11 @@ select#hike_hiking_trail_attributes_feature_id { width: 100%; }
 
 .display-4-md { font-size: 3rem; }
 
+.color-burnt-orange { color: #e29c14; }
+
+.bg-grey-red { background: #655f5e; }
+
+.color-slight-pink { color: #dcb3e8; }
 
 // =============================================
 //	BUTTONS
@@ -88,7 +93,12 @@ select#hike_hiking_trail_attributes_feature_id { width: 100%; }
 
 .btn-color-login:hover { background-color: rgba(255,106,0, .8); } 
 
-.btn-login-form { background-color: rgba(28,193,140, 1) }
+.btn-login-form { 
+		background-color: rgba(28,193,140, 1);
+		border:2px solid rgb(28,193,140);
+	}
+
+.btn-login-form:hover {background-color: rgba(28,193,140, .8)}
 
 .btn-sign_in-facebook { background-color: rgba(3, 169, 244, 1) }
 
@@ -107,6 +117,11 @@ select#hike_hiking_trail_attributes_feature_id { width: 100%; }
 }
 
 .border-plan { border-color: #ff6b6b; }
+
+
+.index-hike-card-container {
+	background: linear-gradient(rgba(85,98,112,.5),rgba(255,107,107,.5)),url('index-bg') no-repeat center center;
+}
 
 .btn-plan-hike {
 	background: linear-gradient(rgba(85,98,112,.5),rgba(255,107,107,.5)),url('btn-plan-hike') no-repeat center center;
@@ -148,6 +163,33 @@ select#hike_hiking_trail_attributes_feature_id { width: 100%; }
 }
 
 // =============================================
+//	CARDS
+// =============================================
+
+.index-hike-card-container {
+	background-size: cover;
+}
+
+.hike-card {
+	position: relative;
+
+	a:hover,
+	a:visited {
+		 color: #e29c14;
+	}
+
+	.card-img {
+		height: 200px;
+		
+	}
+
+	.card-btn {
+		position: absolute;
+		top: 165px;
+	}
+}
+
+// =============================================
 //	CUSTOM CLASS / HELPERS
 // =============================================
 
@@ -157,9 +199,18 @@ select#hike_hiking_trail_attributes_feature_id { width: 100%; }
 
 .font-w-100 { font-weight: 100; }
 
+.font-w-300 { font-weight: 300; }
+
 .no-style { list-style: none; }
 
-.grow { transition: all .2s ease-in-out; }
+.slow-grow { transition: all .4s ease-in-out;  }
+.slow-grow:hover { transform: scale(1.02); }
+.grow {
+ transition: all .2s ease-in-out; 
+}
+
+.bg-black { background: black; }
+
 .grow:hover { transform: scale(1.02); }
 
 
@@ -175,15 +226,21 @@ select#hike_hiking_trail_attributes_feature_id { width: 100%; }
 	.about-text-login {
 		font-size: 1.2rem; 
 	}
+
+	.hike-card { margin: 2rem;}
 	
  }
 
+// min-width: 576px
 @include media-breakpoint-up(sm) { 
 
 	body { background-position-x: center; }
 	.signed-in-as { display: initial; }
+
+	.hike-card { margin: 1rem;}
  }
 
+ // @media (min-width: 768px)
 @include media-breakpoint-up(md) { 
 	.about-text-sign_in { font-size: 1.5rem; }
 
@@ -201,10 +258,12 @@ select#hike_hiking_trail_attributes_feature_id { width: 100%; }
 
  }
 
+// @media (min-width: 992px)
 @include media-breakpoint-up(lg) { 
-	
+
  }
 
+// @media (min-width: 1200px)
 @include media-breakpoint-up(xl) {  }
 
 

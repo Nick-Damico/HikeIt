@@ -10,6 +10,8 @@ class Hike < ApplicationRecord
 	validates :notes, :length => { :maximum => 200 }
 	validate :valid_hike_date
 	# Scope Methods
+	scope :by_date, -> { order(:hike_date) }
+	scope :next_three_days, -> { Hike.where("hike_date < ?",Time.now + 3.days) }
 	
 	def hiking_trail_attributes=(hiking_trail_attributes)
 		if !hiking_trail_attributes.empty?			
@@ -21,6 +23,10 @@ class Hike < ApplicationRecord
 		end
 	end
 
+	def format_date
+		self.hike_date = hike_date.strftime("%B %d, %Y")
+	end
+
 	private 
 
 	def valid_hike_date		
@@ -29,8 +35,6 @@ class Hike < ApplicationRecord
 		end
 	end
 
-	def format_date
-		self.hike_date = hike_date.strftime("%B %d, %Y")
-	end
+	
 
 end
