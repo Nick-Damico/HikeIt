@@ -1,10 +1,6 @@
 class StaticController < ApplicationController
+	layout 'landing-login-signup'
   def home
   end
 
-  def about
-  end
-
-  def contact
-  end
 end
