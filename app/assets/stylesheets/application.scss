@@ -32,6 +32,9 @@ html,body {
 }
 
 
+.dark-mtn-blue { background: rgba(#516177, .75); }
+
+
 
 // =============================================
 //	TEXT STYLES
@@ -136,7 +139,10 @@ html,body {
 
 .signed-in-as { display: none; }
 
-
+.plan-hike-header {
+	background: #516177;
+	margin: 0 auto;
+}
 
 // =============================================
 //	CUSTOM CLASS / HELPERS
@@ -145,6 +151,8 @@ html,body {
 .w-100 { width: 100% }
 .w-75 { width: 75% }
 .w-50 { width: 50% }
+
+.font-w-100 { font-weight: 100; }
 
 .no-style { list-style: none; }
 

@@ -1,54 +1,73 @@
  
 <%= render partial: 'hike-errors', locals: { hike: @hike } %>
 
-<%= form_for(hike) do |f| %>
+<%= form_for(hike, :html => {:class => "dark-mtn-blue p-3 text-white rounded mb-4"}) do |f| %>
 	<%= f.hidden_field :leader_id, :value => hike.leader_id %>
-	<div class="field">
-		<%= f.label :title %><br />
-		<%= f.text_field :title %>	
+
+	<div class="row">
+		<div class="field col text-center">
+			<%= f.label :title %><br />
+			<%= f.text_field :title, :class => "w-100" %>	
+		</div>
+
+		<div class="field col text-center">
+			<%= f.label :description %><br />
+			<%= f.text_field :description, :class => "w-100" %>
+		</div>
 	</div>
 
-	<div class="field">
-		<%= f.label :description %><br />
-		<%= f.text_field :description %>
-	</div>
-
-	<h5>You can only choose One Hiking Trail for this hike, select an existing trails above or define make your own below.</h5>
-
-	<div class="field">
+	<div class="field mt-3 text-center">
 		<%= f.label :hiking_trail_id %><br />
 		<%= f.collection_select :hiking_trail_id, HikingTrail.all, :id, :name, :include_blank => "Pick the Perfect Trail for your Adventure" %>
 	</div>
 
 	<% if hike.hiking_trail_id.nil? %>
-		<div class="field">
-			<h6>Didn't Find one you like? Make your own below!</h6>
-			<fieldset>
-				<legend>Hiking Trail</legend>
+		<div class="field mt-3">
+			<h6 class="text-center">Didn't Find one you like? Make your own below!</h6>
+			<fieldset class="border border-white p-3">
+				<legend class="text-center font-w-100 border border-white">Hiking Trail</legend>
 				<%= f.fields_for :hiking_trail, @hike.build_hiking_trail do |ht_builder| %>
-					<div class="field">
-						<%= ht_builder.label :name %><br />
-						<%= ht_builder.text_field :name %>
-					</div>
-					
-					<div class="field">
-						<%= ht_builder.label :location %><br />
-						<%= ht_builder.text_field :location %>
+
+					<div class="row text-center">
+						<div class="col">
+							<div class="field">
+								<%= ht_builder.label :name %><br />
+								<%= ht_builder.text_field :name, :class => "w-100" %>
+							</div>
+						</div>
+
+						<div class="col">
+							<div class="field">
+								<%= ht_builder.label :location %><br />
+								<%= ht_builder.text_field :location, :class => "w-100" %>
+							</div>
+						</div>
 					</div>
 
-					<div class="field">
+					<div class="field text-center mt-2">
 						<%= ht_builder.label :area, "Choose the Hike Area" %><br />
 						<%= ht_builder.select :area, HikingTrail::TRAIL_AREAS, :include_blank => "Hiking Areas of GSMNP" %>
 					</div>
 
-					<div class="field">
+					<div class="field text-center mt-2">
 						<%= ht_builder.label :feature_id, "Choose feature for this trail" %><br />
 						<%= ht_builder.collection_select :feature_id, Feature.all, :id, :title, :include_blank => "GSMNP Features" %>
 					</div>
 
-					<div class="field">
-						<%= ht_builder.label :distance %><br />
-						<%= ht_builder.text_field :distance %>
+					<div class="row text-center mt-2">
+						<div class="col">
+							<div class="field">
+								<%= ht_builder.label :distance %><br />
+								<%= ht_builder.text_field :distance %>
+							</div>
+						</div>
+
+						<div class="col">
+							<div class="field">
+								<%= ht_builder.label :difficulty_rating, "Rating: 0-5 easy, 10+ strenuous" %><br />
+								<%= ht_builder.select :difficulty_rating, (0..30) %>
+							</div>
+						</div>
 					</div>
 
 				<% end %>
@@ -56,20 +75,30 @@
 		</div>
 	<% end %>
 	
-	<div class="field">
-		<%= f.label :hike_date %><br />
-		<%= f.date_select :hike_date %>
-	</div>
+	<div class="row text-center mt-2">			
+			<div class="col">
+				<div class="field">
+					<%= f.label :hike_date %><br />
+					<%= f.date_select :hike_date %>
+				</div>
+			</div>
 
-	<div class="field">
-		<%= f.label :hike_time %><br />
-		<%= f.time_select :hike_time %>
+			<div class="col">
+				<div class="field">
+					<%= f.label :hike_time %><br />
+					<%= f.time_select :hike_time %>
+				</div>
+			</div>
 	</div>
-
-	<div class="field">
+	
+	<div class="field mt-2 text-center">
 		<%= f.label :notes, "Additonal Notes for Hikers:" %><br />
-		<%= f.text_area :notes %>
+		<%= f.text_area :notes, :class => "w-75" %>
 	</div>
 
-	<%= f.submit %>
+	<div class="row text-center">
+		<div class="col">
+		<%= f.submit :class => "btn mt-2 text-center btn-color-sign_up" %>
+		</div>
+	</div>
 <% end %>
