@@ -14,12 +14,16 @@
 // style for views :landing, :login, :singup
 body.landing-login-signup {
 	background: url('bg-app.jpg') no-repeat;
-	background-size: cover;
 }
 
 // style for views once User is authenticated
 body.application-layout {
-	background: black;
+	background: url('logged-bg.jpg') no-repeat;
+}
+
+body.landing-login-signup,
+body.application-layout {
+	background-size: cover;
 }
 
 html,body {
@@ -30,7 +34,7 @@ html,body {
 
 
 // =============================================
-//	FONTS
+//	TEXT STYLES
 // =============================================
 
 .logo-text { font-size: 1.5rem;  }
@@ -84,6 +88,28 @@ html,body {
 
 .btn-sign_out { background-color: rgba(229,9,20,1) }
 
+.btn-plan-hike,
+.btn-find-hike {
+	background: #556270;
+	background-size: cover;
+	font-size: 1.75rem;
+    width: 100%;
+    height: 200px;
+    margin-top: 1rem;
+    position: relative;
+    font-weight: 100;
+}
+
+.border-plan { border-color: #ff6b6b; }
+
+.btn-plan-hike {
+	background: linear-gradient(rgba(85,98,112,.5),rgba(255,107,107,.5)),url('btn-plan-hike') no-repeat center center;
+}
+
+.btn-find-hike {
+	background: linear-gradient(rgba(85,98,112,.5),rgba(255,107,107,.5)),url('btn-find-hike') no-repeat center center;
+	background-size: cover;
+}
 
 // =============================================
 //	COMPONENTS 
@@ -103,8 +129,12 @@ html,body {
 
 .sign_in-form { background-color: rgba(241,187,88, .4) }
 
+.intro-msg { 
+	font-size: 2.2rem;
+	margin-top: 2rem;
+ }
 
-
+.signed-in-as { display: none; }
 
 
 
@@ -118,7 +148,8 @@ html,body {
 
 .no-style { list-style: none; }
 
-
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.02); }
 
 // =============================================
 //	MEDIA QUERIES
@@ -132,18 +163,24 @@ html,body {
 	.about-text-login {
 		font-size: 1.2rem; 
 	}
-
 	
  }
 
 @include media-breakpoint-up(sm) { 
 
 	body { background-position-x: center; }
-
+	.signed-in-as { display: initial; }
  }
 
 @include media-breakpoint-up(md) { 
 	.about-text-sign_in { font-size: 1.5rem; }
+
+	.intro-msg { font-size: 3.5rem; }
+
+	.btn-plan-hike,
+	.btn-find-hike {
+		width: 75%;
+	}
  }
 
 @include media-breakpoint-up(lg) {  }
