@@ -6,6 +6,7 @@
 
 	<div class="field mt-3 text-center">
 		<%= f.label :hiking_trail_id %><br />
+		<%= link_to "Trail index", hiking_trails_path, :class => "text-white" %>
 		<%= f.collection_select :hiking_trail_id, HikingTrail.all, :id, :name, :include_blank => "Pick the Perfect Trail for your Adventure" %>
 	</div>
 
