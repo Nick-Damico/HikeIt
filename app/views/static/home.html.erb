@@ -1,3 +1,15 @@
 
-<%= button_to "Plan Hike", new_user_hike_path(current_user), :method => :get %>
-<%= button_to "Find Hike", hikes_path, :method => :get %>
+<div class="row">
+	<div class="col">
+		<div class="display-4 text-white text-center intro-msg">Choose your path</div>
+	</div>
+</div>
+
+<div class="row text-center">
+	<div class="col-sm-12 col-md">
+		<%= button_to "Plan Hike", new_user_hike_path(current_user), :method => :get, :class => "btn btn-plan-hike text-white border border-plan grow" %>
+	</div>
+	<div class="col-sm-12 col-md">
+		<%= button_to "Find Hike", hikes_path, :method => :get, :class => "btn btn-find-hike text-white border border-plan grow" %>
+	</div>
+</div>
