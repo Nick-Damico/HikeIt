@@ -1,20 +1,8 @@
  
 <%= render partial: 'hike-errors', locals: { hike: @hike } %>
 
-<%= form_for(hike, :html => {:class => "dark-mtn-blue p-3 text-white rounded mb-4"}) do |f| %>
+<%= form_for(hike, :html => {:class => "dark-mtn-blue p-3 text-white rounded mb-4 border border-white"}) do |f| %>
 	<%= f.hidden_field :leader_id, :value => hike.leader_id %>
-
-	<div class="row">
-		<div class="field col text-center">
-			<%= f.label :title %><br />
-			<%= f.text_field :title, :class => "w-100" %>	
-		</div>
-
-		<div class="field col text-center">
-			<%= f.label :description %><br />
-			<%= f.text_field :description, :class => "w-100" %>
-		</div>
-	</div>
 
 	<div class="field mt-3 text-center">
 		<%= f.label :hiking_trail_id %><br />
@@ -44,14 +32,14 @@
 						</div>
 					</div>
 
-					<div class="field text-center mt-2">
+					<div class="field text-center col mt-2">
 						<%= ht_builder.label :area, "Choose the Hike Area" %><br />
-						<%= ht_builder.select :area, HikingTrail::TRAIL_AREAS, :include_blank => "Hiking Areas of GSMNP" %>
+						<%= ht_builder.select :area, HikingTrail::TRAIL_AREAS, :include_blank => "Hiking Areas of GSMNP", :class => "fix-select-w" %>
 					</div>
 
-					<div class="field text-center mt-2">
+					<div class="field col text-center mt-2">
 						<%= ht_builder.label :feature_id, "Choose feature for this trail" %><br />
-						<%= ht_builder.collection_select :feature_id, Feature.all, :id, :title, :include_blank => "GSMNP Features" %>
+						<%= ht_builder.collection_select :feature_id, Feature.all, :id, :title, :include_blank => "GSMNP Features", :class => "fix-select-w" %>
 					</div>
 
 					<div class="row text-center mt-2">
@@ -74,6 +62,18 @@
 			</fieldset>
 		</div>
 	<% end %>
+
+	<div class="row mt-3">
+		<div class="field col text-center">
+			<%= f.label :title %><br />
+			<%= f.text_field :title, :class => "w-100" %>	
+		</div>
+
+		<div class="field col text-center">
+			<%= f.label :description %><br />
+			<%= f.text_field :description, :class => "w-100" %>
+		</div>
+	</div>
 	
 	<div class="row text-center mt-2">			
 			<div class="col">
@@ -91,7 +91,7 @@
 			</div>
 	</div>
 	
-	<div class="field mt-2 text-center">
+	<div class="field mt-3 text-center">
 		<%= f.label :notes, "Additonal Notes for Hikers:" %><br />
 		<%= f.text_area :notes, :class => "w-75" %>
 	</div>

@@ -31,6 +31,9 @@ html,body {
  overflow-y: scroll;
 }
 
+select#hike_hiking_trail_attributes_area { width: 100%;}
+
+select#hike_hiking_trail_attributes_feature_id { width: 100%; }
 
 .dark-mtn-blue { background: rgba(#516177, .75); }
 
@@ -159,6 +162,7 @@ html,body {
 .grow { transition: all .2s ease-in-out; }
 .grow:hover { transform: scale(1.02); }
 
+
 // =============================================
 //	MEDIA QUERIES
 // =============================================
@@ -189,6 +193,12 @@ html,body {
 	.btn-find-hike {
 		width: 75%;
 	}
+
+	select#hike_hiking_trail_attributes_area { width: 75%;}
+
+	select#hike_hiking_trail_attributes_feature_id { width: 75%; }
+
+
  }
 
 @include media-breakpoint-up(lg) {  }
