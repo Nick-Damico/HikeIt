@@ -17,7 +17,5 @@ Rails.application.routes.draw do
 	# StaticController
 	root 'static#home'
 	get 'static/home'
-	get 'static/about'
-	get 'static/contact'
 
 end
