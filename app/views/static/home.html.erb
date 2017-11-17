@@ -1,12 +1,3 @@
 
-<% if !user_signed_in? %>
-	<div class="mt-5 ml-3">
-		<h1 class="text-white text-shadow display-4-md display-4">Hike with friends. Old and New.</h1>
-		<h2 class="text-white mb-4 text-shadow lead lead-h2">Plan an Adventure Today.</h2>
-		<%= link_to "Get Started",  new_user_registration_path, :class => "btn btn-outline-info" %>
-		<%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, :class => "btn btn-sign_in-facebook text-white" %>
-	 </div>
-<% else %>
-	<%= button_to "Plan Hike", new_user_hike_path(current_user), :method => :get %>
-	<%= button_to "Find Hike", hikes_path, :method => :get %>
-<% end %>
+<%= button_to "Plan Hike", new_user_hike_path(current_user), :method => :get %>
+<%= button_to "Find Hike", hikes_path, :method => :get %>

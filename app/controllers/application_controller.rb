@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 	layout :layout_by_resource
 
   	def after_sign_in_path_for(resource)
-  		request.env['omniauth.origin'] || root_path
+  		request.env['omniauth.origin'] || static_home_path
 	end
 
 	private
@@ -15,5 +15,5 @@ class ApplicationController < ActionController::Base
 		  "application"
 		end
 	end
-	
+
 end

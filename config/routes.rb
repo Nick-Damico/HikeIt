@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 	post 'hikes/:id/leave', :to => 'hikes#leave', :as => 'leave'
 
 	# StaticController
-	root 'static#home'
+	root 'static#landing'
 	get 'static/home'
 
 end

@@ -1,6 +1,11 @@
 class StaticController < ApplicationController
-	layout 'landing-login-signup'
+
   def home
+  	render :layout => 'application'
+  end
+
+  def landing
+  	render :layout => 'landing-login-signup'
   end
 
 end
