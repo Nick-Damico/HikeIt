@@ -1,0 +1,19 @@
+<%= form_tag join_path(hike) do %>
+	<% if hike.users.include?(current_user) || hike.leader == current_user %>
+		<span><b>You've Joined this Hike</b></span>
+	<% else %>
+		<%= submit_tag "Join", :class => "btn btn-login-form text-white" %>
+	<% end %>
+	<% end %>
+
+	<%= form_tag leave_path(hike) do %>
+		<% if hike.users.include?(current_user) && hike.leader != current_user %>
+		<%= submit_tag "Leave Hike", :class => "btn btn-color-login text-white" %>
+	<% end %>
+	<% end %>
+
+	<% if hike.leader_id == current_user.id %>
+		<%= link_to "Edit", edit_hike_path(hike), :class => "btn btn-warning" %>
+
+		<%= link_to "Delete", hike, method: :delete, data: { confirm: "Really?" }, :class => "btn btn-danger" %>
+<% end %>
