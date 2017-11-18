@@ -26,6 +26,7 @@ class HikesController < ApplicationController
 		@hike = Hike.new(hike_params)
 		@hike.hiking_trail = HikingTrail.find_or_create_by(id: params[:hike][:hiking_trail_id]) if @hike.hiking_trail_id.nil?
 		if @hike.save
+			@hike.users << current_user
 			redirect_to hike_path(@hike.id), notice: "Hike successfully created!"
 		else
 			render :new
