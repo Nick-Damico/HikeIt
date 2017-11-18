@@ -27,6 +27,10 @@ class Hike < ApplicationRecord
 		self.hike_date = hike_date.strftime("%B %d, %Y")
 	end
 
+	def format_time
+		self.hike_time = hike_time.strftime('%r')
+	end
+
 	private 
 
 	def valid_hike_date		
