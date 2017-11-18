@@ -61,9 +61,16 @@ select#hike_hiking_trail_attributes_feature_id { width: 100%; }
 
 .color-burnt-orange { color: #e29c14; }
 
-.bg-grey-red { background: #655f5e; }
+.color-grey-red { color: #655f5e; }
 
 .color-slight-pink { color: #dcb3e8; }
+
+.bg-burnt-orange { background: #e29c14; }
+
+.bg-grey-red { background: #655f5e; }
+
+.bg-white { background: white; }
+
 
 // =============================================
 //	BUTTONS
@@ -186,6 +193,22 @@ select#hike_hiking_trail_attributes_feature_id { width: 100%; }
 	.card-btn {
 		position: absolute;
 		top: 165px;
+	}
+}
+
+.show-card {
+	background: linear-gradient(rgba(85,98,112,.5),rgba(255,107,107,.5)),url('index-bg') no-repeat center center;
+	background-size: cover;
+
+	a {
+		&:hover,
+		&:visited {
+			color: #e29c14;
+		}
+	}
+
+	li {
+		background: rgba(0,0,0,.5);
 	}
 }
 

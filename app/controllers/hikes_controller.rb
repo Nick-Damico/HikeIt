@@ -1,5 +1,5 @@
 class HikesController < ApplicationController
-	before_action :find_hike, only: [:show, :edit, :update, :join, :leave]
+	before_action :find_hike, only: [:show, :edit, :update, :join, :leave, :destroy]
 	before_action :authenticate_user!, :except => [:show, :index]
 	before_action :authenticate_as_leader, only: [:edit, :update]
 
