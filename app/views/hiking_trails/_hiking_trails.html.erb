@@ -1,4 +1,4 @@
-<table class="table table-striped table-bordered table-responsive table-light">
+<table class="table trail-table table-striped table-bordered table-responsive table-light">
 	<thead>
 		<th>Trail</th>
 		<th>Location</th>
@@ -8,7 +8,7 @@
 		<th>Elevation Gain</th>
 		<th>Difficulty Rating</th>
 	</thead>
-	<tbody>
+	<tbody class="trail-table">
 		<% hiking_trails.each do |ht| %>
 			<tr>
 				<td><%= link_to "#{ht.name}", ht.url %></td>
