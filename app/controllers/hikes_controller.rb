@@ -14,7 +14,7 @@ class HikesController < ApplicationController
 		end		
 	end
 
-	def new		
+	def new
 		if @user = User.find_by(id: params[:user_id])
 			@hike = @user.hikes.build(leader_id: @user.id)
 		else
