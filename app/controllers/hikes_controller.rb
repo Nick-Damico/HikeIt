@@ -38,7 +38,7 @@ class HikesController < ApplicationController
 				@hike.users << current_user
 				flash[:notice] = "You've joined #{@hike.title}."
 		end
-		redirect_to users_show_path
+		redirect_to hike_path(@hike)
 	end
 
 	def leave
