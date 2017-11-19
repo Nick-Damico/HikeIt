@@ -11,7 +11,7 @@
 	<tbody class="trail-table">
 		<% hiking_trails.each do |ht| %>
 			<tr>
-				<td><%= link_to "#{ht.name}", ht.url %></td>
+				<td><%= link_to "#{ht.name}", hiking_trail_path(ht) %></td>
 				<td><%= ht.location %></td>
 				<td><%= ht.area %></td>
 				<td><%= ht.feature.title %></td>
