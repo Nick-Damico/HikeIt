@@ -212,6 +212,19 @@ select#hike_hiking_trail_attributes_feature_id { width: 100%; }
 	}
 }
 
+.notes-header {
+	background: white;
+    padding: 5px 5px 0 5px;
+    position: relative;
+    display: inline-block;    
+}
+
+p.notes-p {
+    	border: 1px solid lightgray;
+    	padding: 20px 10px 10px;
+    	margin-top: -20px;
+    }
+
 // =============================================
 //	CUSTOM CLASS / HELPERS
 // =============================================
