@@ -10,6 +10,7 @@ class HikingTrail < ApplicationRecord
 	# Scope Methods
 	scope :by_distance, -> { order(:distance) }
 	scope :by_alphabet, -> { order(:name) }
+	scope :by_area, -> (trail_area) { where('area = ?', trail_area) }
 	
 	TRAIL_AREAS = [
 		"Gatlinburg / Mt. LeConte Area",
