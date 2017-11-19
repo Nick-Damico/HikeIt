@@ -1,7 +1,6 @@
 class HikingTrailsController < ApplicationController
   before_action :find_hiking_trail, :only => [:show, :edit]
   before_action :authenticate_user!, :except => [:show, :index]
-  before_action :authenticate_admin!, :except => [:show, :index]
 
   def index
   	@hiking_trails = HikingTrail.all

@@ -236,6 +236,27 @@ select#hike_hiking_trail_attributes_feature_id { width: 100%; }
 
 .grow:hover { transform: scale(1.02); }
 
+.plus-btn {
+	font-size: 4rem;
+	padding: 20px;
+}
+
+tbody.trail-table tr:nth-child(2n-1) {
+	background: #ececec;
+}
+
+table.table {
+	th {
+		font-weight: 100;
+	}
+	a {
+		color: #e29c14;
+		&:hover,
+		&:visited {
+			color: #e29c14;
+		}
+	}
+}
 
 // =============================================
 //	MEDIA QUERIES
