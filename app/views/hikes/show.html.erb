@@ -1,17 +1,20 @@
 <div class="row mb-3">
+	
+	<!-- Show card for Hike -->
 	<div class="col-12 col-md-6 hike-show-card bg-white p-4 text-center border border-right-0 border-white">
 
 		<img class="img-thumbnail" src="<%= @hike.hiking_trail.image_url if @hike.hiking_trail.image_url %>" />
 		<h3 class="font-w-300 color-burnt-orange"><%= @hike.title %></h3>
 		<h4 class="font-w-100 color-grey-red mb-0"><%= @hike.hiking_trail.name %></h4>
-		<p class="font-w-100 color-grey-red">( <%= @hike.hiking_trail.area %> )</p>
-		 
 
+		<p class="font-w-100 color-grey-red">( <%= @hike.hiking_trail.area %> )</p>		 
 		<span class="font-w-100 color-slight-pink"><%= @hike.format_date %> | <%= @hike.format_time %></span>
 
 		<p><%= @hike.description %></p>
-		<h4 class="notes-header font-w-100 color-grey-red">Notes:</h4>
-		<p class="notes-p"><%= @hike.notes %></p>
+		<% if !@hike.notes.empty? %>
+			<h4 class="notes-header font-w-100 color-grey-red">Notes:</h4>
+			<p class="notes-p"><%= @hike.notes %></p>
+		<% end %>
 
 		<ul class="no-style p-0">
 			<h3><u>Hikers Joined</u></h3>
@@ -20,10 +23,10 @@
 			<% end %>
 		</ul>
 
-		<%= render partial: 'show-btns', locals: { hike: @hike } %>
-		
+		<%= render partial: 'show-btns', locals: { hike: @hike } %>		
 	</div>
 
+	<!-- Card on right with list of upcoming hikes -->
 	<div class="d-flex justify-content-center align-items-center col-12 col-md-6 show-card text-center p-4 border border-left-0 border-white">
 		<ul class="no-style p-0">
 			<h2 class="text-white font-w-100">Your Upcoming Hikes</h2>
@@ -33,5 +36,5 @@
 			<% end %>
 		<ul>
 			<%= link_to "All Hikes", hikes_path, :class => "btn btn-login-form text-white mt-3" %>
-	</div>
-</div>
+	</div> <!-- End of div.show-card -->
+</div> <!-- End of div.row -->
