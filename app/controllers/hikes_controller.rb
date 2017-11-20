@@ -73,7 +73,7 @@ class HikesController < ApplicationController
 
 	def destroy
    		@hike.destroy
-    	redirect_to root_path
+    	redirect_to static_home_path
  	end
 
 	private	
