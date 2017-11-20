@@ -15,7 +15,7 @@ class HikesController < ApplicationController
 	end
 
 	def new
-		if @user = User.find_by(id: params[:user_id])
+		if @user = User.find_by(id: params[:user_id])			
 			@hike = @user.hikes.build(leader_id: @user.id)
 		else
 			@hike = Hike.new
@@ -25,6 +25,7 @@ class HikesController < ApplicationController
 	def create
 		@hike = Hike.new(hike_params)
 		@hike.hiking_trail = HikingTrail.find_or_create_by(id: params[:hike][:hiking_trail_id]) if @hike.hiking_trail_id.nil?
+		@hike.leader_id = current_user.id if @hike.leader_id.nil?
 		if @hike.save
 			@hike.users << current_user
 			redirect_to hike_path(@hike.id), notice: "Hike successfully created!"
