@@ -1,4 +1,11 @@
-<h1 class="navbar-brand mb-0 h1"><%= link_to "HikeIt", root_path, :class => "text-white logo-text btn-outline-light btn" %></h1>
+<h1 class="navbar-brand mb-0 h1">
+	<% if signed_in? %>
+		<%= link_to "HikeIt", static_home_path, :class => "text-white logo-text btn-outline-light btn" %>
+	<% else %>
+		<%= link_to "HikeIt", root_path, :class => "text-white logo-text btn-outline-light btn" %>
+	<% end %>
+		
+</h1>
 
 <% if user_signed_in? %>
 	<li class="lead text-white no-style signed-in-as">Signed in as <%= current_user.email %></li>
