@@ -1,11 +1,15 @@
 <div class="row mb-3">
-	
+
 	<!-- Show card for Hike -->
 	<div class="col-12 col-md-6 hike-show-card bg-white p-4 text-center border border-right-0 border-white">
 
-		<img class="img-thumbnail" src="<%= @hike.hiking_trail.image_url if @hike.hiking_trail.image_url %>" />
+		<% if @hike.hiking_trail.image_url %>
+			<img class="img-thumbnail" src="<%= @hike.hiking_trail.image_url %>" />
+		<% else %>
+			<%= image_tag('btn-find-hike', :class => "img-thumbnail") %>
+		<% end %>
 		<h3 class="font-w-300 color-burnt-orange"><%= @hike.title %></h3>
-		<h4 class="font-w-100 color-grey-red mb-0"><%= @hike.hiking_trail.name %></h4>
+		<h4 class="font-w-100 color-grey-red mb-0"><%= link_to @hike.hiking_trail.name, hiking_trail_path(@hike.hiking_trail) %></h4>
 
 		<p class="font-w-100 color-grey-red">( <%= @hike.hiking_trail.area %> )</p>		 
 		<span class="font-w-100 color-slight-pink"><%= @hike.format_date %> | <%= @hike.format_time %></span>
