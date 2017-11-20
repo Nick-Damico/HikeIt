@@ -127,9 +127,15 @@ select#hike_hiking_trail_attributes_feature_id { width: 100%; }
 
 .border-plan { border-color: #ff6b6b; }
 
+.plan-hike-btn {
+	position: absolute;
+	left: 8px;
+    top: -16px;
+}
 
 .index-hike-card-container {
 	background: linear-gradient(rgba(85,98,112,.5),rgba(255,107,107,.5)),url('index-bg') no-repeat center center;
+	position: relative;
 }
 
 .btn-plan-hike {
@@ -231,9 +237,9 @@ p.notes-p {
 //	CUSTOM CLASS / HELPERS
 // =============================================
 
-.w-100 { width: 100% }
-.w-75 { width: 75% }
-.w-50 { width: 50% }
+.w-100 { width: 100%;}
+.w-75 { width: 75%; }
+.w-50 { width: 50%; }
 
 .font-w-100 { font-weight: 100; }
 
@@ -273,6 +279,40 @@ table.table {
 	}
 }
 
+
+// =============================================
+//	ERRORS | FLASH MESSAGES
+// =============================================
+
+.notice { 
+    color: #1dc18c;
+    display: inline-block;
+    padding: 5px 10px;
+}
+
+.field_with_errors  {
+	background: #e52416;
+
+	.input {
+		background: #e52416;
+	}
+}
+
+#error_explanation {
+    color: #ef9090;
+    text-align: center;
+    background: rgba(#455369, .8);
+    padding: 10px;
+    border: 1px solid white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    ul {
+    	list-style: none;
+    	padding-left: 0;
+    }
+ }
+
 // =============================================
 //	MEDIA QUERIES
 // =============================================
@@ -297,6 +337,13 @@ table.table {
 	.signed-in-as { display: initial; }
 
 	.hike-card { margin: 1rem;}
+
+
+	.plan-hike-btn {
+		position: absolute;
+		left: -25px;
+		top: -28px;
+	}
  }
 
  // @media (min-width: 768px)

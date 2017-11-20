@@ -6,7 +6,7 @@
 <div class="row text-white justify-content-around index-hike-card-container rounded">
 	<% @hikes.each do |hike| %>
 
-		<div class="col-10 col-sm-5 col-md-4 col-lg-3 border border-dark slow-grow hike-card mb-4 p-1 color bg-grey-red">
+		<div class="col-8 col-sm-5 col-md-4 col-lg-3 border border-dark slow-grow hike-card mb-4 p-1 color bg-grey-red">
 
 			<% if hike.hiking_trail.image_url %>
 				<%= image_tag "#{hike.hiking_trail.image_url}", :class => "img-fluid w-100 card-img" %>
@@ -35,4 +35,5 @@
 			</div>
 		</div>
 	<% end %>
+	<%= link_to "+Hike", new_user_hike_path(current_user), :class => "btn btn-sign_in-facebook text-white plan-hike-btn" %>
 </div>
