@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HikeIt</title>
+    <title><%= yield :title %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,18 +10,18 @@
   </head>
 
   <body class="application-layout">
-
     <nav class="navbar navbar-dark bg-dark navbar-expand-md">   
       <div class="container">
+
         <%= render 'layouts/app-navbar' %>
-        </div>
-      
+
+        </div>      
     </nav>
     
     <div class="container">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-     <%= yield %>
+      <%= yield %>
     </div>
   </body>
 </html>
