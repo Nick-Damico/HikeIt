@@ -1,3 +1,5 @@
+<%= title "#{@hike.title}" %>
+
 <div class="row mb-3">
 
 	<!-- Show card for Hike -->
@@ -26,15 +28,14 @@
 	</div>
 
 	<!-- Card on right with list of upcoming hikes -->
-	<div class="d-flex justify-content-center align-items-center col-12 col-md-6 show-card text-center p-4 border border-left-0 border-white">
+	<div class="d-flex flex-column justify-content-center align-items-center col-12 col-md-6 show-card text-center p-4 border border-left-0 border-white">
 		<ul class="no-style p-0">
 			<h2 class="text-white font-w-100">Your Upcoming Hikes</h2>
-			<% current_user.hikes.each do |hike| %>
+			
+				<%= render partial: 'hike_li', collection: current_user.hikes, as: :hike  %>
 
-				<%= render 'hike_li', hike: hike  %>
-				
-			<% end %>
-		<ul>
 			<%= link_to "All Hikes", hikes_path, :class => "btn btn-login-form text-white mt-3" %>
+		</ul>
+			
 	</div> <!-- End of div.show-card -->
 </div> <!-- End of div.row -->
