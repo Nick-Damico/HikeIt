@@ -20,5 +20,12 @@ module HikingTrailsHelper
 		trail.area
 	end
 
+	def display_notes(hike)
+		if !hike.notes.empty?
+			@content = content_tag(:h4, "Notes:", :class => "notes-header font-w-100 color-grey-red")
+			@content << content_tag(:p, "#{hike.notes}", :class => "notes-p")
+		end
+	end
+
 
 end
