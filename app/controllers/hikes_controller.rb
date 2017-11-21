@@ -1,11 +1,10 @@
 class HikesController < ApplicationController
 	before_action :find_hike, only: [:show, :edit, :update, :join, :leave, :destroy]
-	before_action :authenticate_user!, :except => [:show, :index]
+	before_action :authenticate_user!
 	before_action :authenticate_as_leader, only: [:edit, :update]
 
 	def index
-		if params[:user_id]
-			@hikes = User.find(params[:user_id]).hikes
+		if params[:user_id] && @hikes = User.find_by(id: params[:user_id]).hikes
 			if hikes_lead = Hike.all.find_by(leader_id: params[:user_id])
 				@hikes <<  hikes_lead 
 			end
@@ -27,7 +26,7 @@ class HikesController < ApplicationController
 		@hike.hiking_trail = HikingTrail.find_or_create_by(id: params[:hike][:hiking_trail_id]) if @hike.hiking_trail_id.nil?
 		@hike.leader_id = current_user.id if @hike.leader_id.nil?
 		if @hike.save
-			@hike.users << current_user
+			@hike.users.push(current_user)
 			redirect_to hike_path(@hike.id), notice: "Hike successfully created!"
 		else
 			render :new
@@ -35,8 +34,9 @@ class HikesController < ApplicationController
 	end
 
 	def join
+		binding.pry
 		if !@hike.users.include?(current_user)
-				@hike.users << current_user
+				@hike.users.push current_user
 				flash[:notice] = "You've joined #{@hike.title}."
 		end
 		redirect_to hike_path(@hike)
