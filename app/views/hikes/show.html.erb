@@ -12,7 +12,7 @@
 		<h4 class="font-w-100 color-grey-red mb-0"><%= link_to @hike.hiking_trail.name, hiking_trail_path(@hike.hiking_trail) %></h4>
 
 		<p class="font-w-100 color-grey-red">( <%= @hike.hiking_trail.area %> )</p>		 
-		<span class="font-w-100 color-slight-pink"><%= @hike.format_date %> | <%= @hike.format_time %></span>
+		<span class="font-w-100 color-slight-pink"><%=display_date(@hike) %> | <%= display_time(@hike)%></span>
 
 		<p><%= @hike.description %></p>
 		<% if !@hike.notes.empty? %>
@@ -36,7 +36,7 @@
 			<h2 class="text-white font-w-100">Your Upcoming Hikes</h2>
 			<% current_user.hikes.each do |hike| %>
 			
-				<li class="color-slight-pink p-2 mb-1"><%= link_to "#{hike.title}", hike_path(hike), :class =>"color-burnt-orange mb-1" %> | <%= hike.format_date %></li>
+				<li class="color-slight-pink p-2 mb-1"><%= link_to "#{hike.title}", hike_path(hike), :class =>"color-burnt-orange mb-1" %> | <%= display_date(hike) %></li>
 			<% end %>
 		<ul>
 			<%= link_to "All Hikes", hikes_path, :class => "btn btn-login-form text-white mt-3" %>
