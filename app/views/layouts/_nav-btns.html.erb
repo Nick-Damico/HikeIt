@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+	<li class="lead text-white no-style signed-in-as font-w-100 pr-2"><%= current_user.email %></li>
+		<%= button_to "Sign out", destroy_user_session_path, method: :delete, :class => "btn btn-sign_out text-white"%>
+<% else %>
+	<nav class="navbar navbar-landing justify-content-between">
+		<%= button_to "Sign up", new_user_registration_path, :method => :get, :class => "btn btn-color-sign_up form-inline" %>
+		<%= button_to "Log in", new_user_session_path, :class => "btn btn-color-login text-white form-inline ml-2" %>
+  	</nav>
+<% end %>

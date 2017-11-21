@@ -1,18 +1,6 @@
-<h1 class="navbar-brand mb-0 h1">
-	<% if signed_in? %>
-		<%= link_to "HikeIt", static_home_path, :class => "text-white logo-text btn-outline-light btn" %>
-	<% else %>
-		<%= link_to "HikeIt", root_path, :class => "text-white logo-text btn-outline-light btn" %>
-	<% end %>
-		
-</h1>
-
-<% if user_signed_in? %>
-	<li class="lead text-white no-style signed-in-as">Signed in as <%= current_user.email %></li>
-		<%= button_to "Sign out", destroy_user_session_path, method: :delete, :class => "btn btn-sign_out text-white"%>
-<% else %>
-	<nav class="navbar navbar-landing justify-content-between">
-		<%= button_to "Sign up", new_user_registration_path, :method => :get, :class => "btn btn-color-sign_up form-inline" %>
-		<%= button_to "Log in", new_user_session_path, :class => "btn btn-color-login text-white form-inline ml-2" %>
-  	</nav>
-<% end %>
+<nav class="navbar navbar-light">   
+	<div class="container">
+		<h1 class="navbar-brand mb-0 h1"><%= logo_path %></h1>
+		<%= render 'layouts/nav-btns' %>
+	</div>   
+</nav>

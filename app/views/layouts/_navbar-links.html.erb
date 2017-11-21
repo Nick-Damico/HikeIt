@@ -1,0 +1,14 @@
+<ul class="navbar-nav">
+	<li class="nav-item active">
+		<%= link_to "Home", static_home_path, :class => "nav-link" %>
+	</li>
+	<li class="nav-item">
+		<%= link_to "Hikes", hikes_path, :class => "nav-link" %>
+	</li>
+	<li class="nav-item">
+		<%= link_to "Trails", hiking_trails_path, :class => "nav-link" %>
+	</li>
+	<li class="nav-item">
+		<%= link_to "Profile", user_path(current_user), :class => "nav-link" %>
+	</li>
+</ul>

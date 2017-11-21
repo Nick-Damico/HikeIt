@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HikeIt</title>
+    <title><%= yield :title %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,12 +9,7 @@
     <%= analytics_init if Rails.env.production? %>
   </head>
   <body class="landing-login-signup">
-
-    <nav class="navbar navbar-light">   
-      <div class="container">
-        <%= render 'layouts/landing-navbar' %>
-      </div>   
-    </nav>
+    <%= render 'layouts/landing-navbar' %>
     
     <div class="container">
       <p class="notice"><%= notice %></p>

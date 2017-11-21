@@ -1,42 +1,16 @@
-<h1 class="navbar-brand mb-0 h1">
-	<% if signed_in? %>
-		<%= link_to "HikeIt", static_home_path, :class => "text-white logo-text btn-outline-light btn" %>
-	<% else %>
-		<%= link_to "HikeIt", root_path, :class => "text-white logo-text btn-outline-light btn" %>
-	<% end %>
-		
-</h1>
+<nav class="navbar navbar-dark bg-dark navbar-expand-md">   
+	<div class="container">
+        <h1 class="navbar-brand mb-0 h1"><%= logo_path %></h1>
 
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-	<ul class="navbar-nav">
-	  <li class="nav-item active">
-	  	<%= link_to "Home", static_home_path, :class => "nav-link" %>
-	  </li>
-	  <li class="nav-item">
-	    <%= link_to "Hikes", hikes_path, :class => "nav-link" %>
-	  </li>
-	  <li class="nav-item">
-	    <%= link_to "Trails", hiking_trails_path, :class => "nav-link" %>
-	  </li>
-	  <li class="nav-item">
-	    <%= link_to "Profile", user_path(current_user), :class => "nav-link" %>
-	  </li>
-	</ul>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    	<span class="navbar-toggler-icon"></span>
+		</button>
 
+	<div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+		<%= render 'layouts/navbar-links' %>
   		<div class="form-inline">
-    		
-		<% if user_signed_in? %>
-			<li class="lead text-white font-w-100 pr-2 no-style signed-in-as"><%= current_user.email %></li>
-			<%= button_to "Sign out", destroy_user_session_path, method: :delete, :class => "btn btn-sign_out text-white"%>
-		<% else %>
-		
-		<%= button_to "Sign up", new_user_registration_path, :method => :get, :class => "btn btn-color-sign_up form-inline" %>
-		<%= button_to "Log in", new_user_session_path, :class => "btn btn-color-login text-white form-inline ml-2" %>
-
-		<% end %>  		
+    		<%= render 'layouts/nav-btns' %>
 		</div>
 
-</div>
+    </div>      
+</nav>
