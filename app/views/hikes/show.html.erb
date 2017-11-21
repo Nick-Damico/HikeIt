@@ -3,22 +3,17 @@
 	<!-- Show card for Hike -->
 	<div class="col-12 col-md-6 hike-show-card bg-white p-4 text-center border border-right-0 border-white">
 
-		<% if @hike.hiking_trail.image_url %>
-			<img class="img-thumbnail" src="<%= @hike.hiking_trail.image_url %>" />
-		<% else %>
-			<%= image_tag('btn-find-hike', :class => "img-thumbnail") %>
-		<% end %>
-		<h3 class="font-w-300 color-burnt-orange"><%= @hike.title %></h3>
-		<h4 class="font-w-100 color-grey-red mb-0"><%= link_to @hike.hiking_trail.name, hiking_trail_path(@hike.hiking_trail) %></h4>
+		<%= trail_image_tag(@hike.hiking_trail, 'show') %>
 
-		<p class="font-w-100 color-grey-red">( <%= @hike.hiking_trail.area %> )</p>		 
+		<h3 class="font-w-300 color-burnt-orange"><%= @hike.title %></h3>
+		<h4 class="font-w-100 color-grey-red mb-0"><%= link_to trail_name(@hike.hiking_trail), hiking_trail_path(@hike.hiking_trail) %></h4>
+
+		<p class="font-w-100 color-grey-red">( <%= trail_area(@hike.hiking_trail) %> )</p>		 
 		<span class="font-w-100 color-slight-pink"><%=display_date(@hike) %> | <%= display_time(@hike)%></span>
 
 		<p><%= @hike.description %></p>
-		<% if !@hike.notes.empty? %>
-			<h4 class="notes-header font-w-100 color-grey-red">Notes:</h4>
-			<p class="notes-p"><%= @hike.notes %></p>
-		<% end %>
+		
+		<%= display_notes(@hike) %>
 
 		<ul class="no-style p-0">
 			<h3><u>Hikers Joined</u></h3>
@@ -35,8 +30,9 @@
 		<ul class="no-style p-0">
 			<h2 class="text-white font-w-100">Your Upcoming Hikes</h2>
 			<% current_user.hikes.each do |hike| %>
-			
-				<li class="color-slight-pink p-2 mb-1"><%= link_to "#{hike.title}", hike_path(hike), :class =>"color-burnt-orange mb-1" %> | <%= display_date(hike) %></li>
+
+				<%= render 'hike_li', hike: hike  %>
+				
 			<% end %>
 		<ul>
 			<%= link_to "All Hikes", hikes_path, :class => "btn btn-login-form text-white mt-3" %>
