@@ -1,3 +1,5 @@
+<% title "#{@hiking_trail.name}" %>
+
 <h2 class="font-w-100 text-white text-center">Hiking Trail</h2>
 
 <div class="row mb-3">
@@ -7,39 +9,20 @@
 
 		<img class="img-thumbnail" src="<%= @hiking_trail.image_url if @hiking_trail.image_url %>" />
 		<h2 class="font-w-100"><%= @hiking_trail.name %></h2>
-		<table class="table trail-table table-striped table-bordered table-responsive table-light">
-			<thead>
-				<th>Location</th>
-				<th>Area</th>
-				<th>Features</th>
-				<th>Miles(Round-Trip)</th>
-				<th>Elevation Gain</th>
-				<th>Difficulty Rating</th>
-			</thead>
-			<tbody>
-				<tr>					
-					<td><%= @hiking_trail.location %></td>
-					<td><%= @hiking_trail.area %></td>
-					<td><%= @hiking_trail.feature.title %></td>
-					<td><%= @hiking_trail.distance %></td>
-					<td><%= @hiking_trail.elevation_gain %></td>
-					<td><%= @hiking_trail.difficulty_rating %></td>
-				</tr>
-			</tbody>
-		</table>
+		<%= render 'trail-table', trail: @hiking_trail %>
+
 		<span class="font-w-100 color-slight-pink">( More info at HikingSmokies.com )</span>
 		<%= button_to "More Info", @hiking_trail.url, :class => "btn btn-color-sign_up text-white mt-3" %>
 	</div>
 
 	<!-- Card on right with list of upcoming hikes -->
-	<div class="d-flex justify-content-center align-items-center col-12 col-md-6 show-card text-center p-4 border border-left-0 border-white">
+	<div class="d-flex flex-column justify-content-center align-items-center col-12 col-md-6 show-card text-center p-4 border border-left-0 border-white">
 		<ul class="no-style p-0">
 			<h2 class="text-white font-w-100">Trails in the Area</h2>
-			<% HikingTrail.by_area(@hiking_trail.area).limit(5).each do |ht| %>
 
-				<li class="color-slight-pink p-2 mb-1"><%= link_to "#{ht.name}", hiking_trail_path(ht), :class =>"color-burnt-orange mb-1" %> | <%= ht.location %></li>				
-			<% end %>
-		<ul>
+			<%= render partial: 'trail-li', collection: HikingTrail.by_area(trail_area(@hiking_trail)).limit(5), as: :ht %>
+			
+		</ul>
 		<%= link_to "All Trails", hiking_trails_path, :class => "btn btn-login-form text-white mt-3" %>	
 	</div> <!-- End of div.show-card -->
 </div> <!-- End of div.row -->

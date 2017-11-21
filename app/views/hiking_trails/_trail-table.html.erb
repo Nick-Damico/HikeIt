@@ -1,0 +1,20 @@
+<table class="table trail-table table-striped table-bordered table-responsive table-light">
+	<thead>
+		<th>Location</th>
+		<th>Area</th>
+		<th>Features</th>
+		<th>Miles(Round-Trip)</th>
+		<th>Elevation Gain</th>
+		<th>Difficulty Rating</th>
+	</thead>
+	<tbody class="trail-table">
+		<tr>					
+			<td><%= trail.location %></td>
+			<td><%= trail.area %></td>
+			<td><%= trail.feature.title %></td>
+			<td><%= trail.distance %></td>
+			<td><%= trail.elevation_gain %></td>
+			<td><%= trail.difficulty_rating %></td>
+		</tr>
+	</tbody>
+</table>
