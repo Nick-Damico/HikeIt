@@ -248,6 +248,10 @@ p.notes-p {
 	}
 }
 
+.joined-btn {
+	padding: 0.395rem;
+}
+
 // =============================================
 //	CUSTOM CLASS / HELPERS
 // =============================================
@@ -299,7 +303,8 @@ table.table {
 //	ERRORS | FLASH MESSAGES
 // =============================================
 
-.notice { 
+.notice,
+.alert { 
     color: #1dc18c;
     display: inline-block;
     padding: 5px 10px;
