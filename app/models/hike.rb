@@ -1,15 +1,15 @@
 class Hike < ApplicationRecord
-	# Associations
+	
 	has_many :planned_hikes, dependent: :delete_all
 	has_many :users, through: :planned_hikes
 	belongs_to :leader, :class_name => "User", :foreign_key => 'leader_id'
 	belongs_to :hiking_trail, optional: true
-	# Validations
+	
 	validates :title, :description, :hike_date, :presence => true
 	validates :description, :length => { :maximum => 390 }
 	validates :notes, :length => { :maximum => 200 }
 	validate :valid_hike_date
-	# Scope Methods
+	
 	scope :by_date, -> { order(:hike_date) }
 	scope :next_three_days, -> { Hike.where("hike_date < ?",Time.now + 3.days) }
 	
