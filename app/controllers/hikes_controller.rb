@@ -34,7 +34,6 @@ class HikesController < ApplicationController
 	end
 
 	def join
-		binding.pry
 		if !@hike.users.include?(current_user)
 				@hike.users.push current_user
 				flash[:notice] = "You've joined #{@hike.title}."
