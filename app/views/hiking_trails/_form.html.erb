@@ -56,12 +56,12 @@
 	<div class="row text-center">
 		<div class="col field mt-2 text-center">
 			<%= f.label :distance, "R/T in Miles" %><br />
-			<%= f.text_field :distance %>
+			<%= f.number_field :distance, step: :any %>
 		</div>
 
 		<div class="col field mt-2 text-center">
 			<%= f.label :elevation_gain, "Total Elev. Gain" %><br />
-			<%= f.text_field :elevation_gain %>
+			<%= f.number_field :elevation_gain, step: :any %>
 		</div>
 	</div>
 
