@@ -1,56 +1,10 @@
-<div class="row">
-	<div class="col col-lg-6 offset-lg-3 text-center bg-white profile_container rounded-top border border-white">
-		<%= link_to "edit", edit_user_registration_path %>
-		<% if @user.profile_image.nil? || @user.profile_image.empty? %>
-			<%= image_tag "profile-temp.svg", :class => "profile_pic rounded-circle img-thumbnail" %>
-		<% else %>
-			<%= image_tag "#{@user.profile_image}", :class => "profile_pic rounded-circle img-thumbnail" %>
-		<% end %>
-		
-		<%= form_for(@user) do |f| %>
+<div class="profile_container col col-lg-6 offset-lg-3 text-center bg-white profile_container rounded-top border border-white">
+	
+	<%= render 'user-controls', user: @user %>
 
-			<div class="field">
-			<%= f.label :trail_name %><br>
-			<%= f.text_field :trail_name %>
-			</div>
+	<%= render 'form', user: @user %>
 
-			<div class="field">
-			<%= f.label :bio %><br>
-			<%= f.text_field :bio %>
-			</div>
+</div>		
 
-			<div class="field">
-			<%= f.label :profile_image %><br>
-			<%= f.text_field :profile_image %>		
-			</div>
 
-			<%= f.submit %>
-		<% end %>
-		<h2><%= @user.trail_name %></h2>
-
-		<h4 class="notes-header font-w-100 color-grey-red">Bio:</h4>
-		<p class="notes-p"><%= @user.bio %></p>
-	</div>		
-</div>
-
-<div class="row">	
-	<div class="justify-content-center align-items-center col-12 col-md-6 col-lg-4 offset-lg-2 show-card text-center p-4 border border-left-0 border-white">
-
-		<h2 class="text-white font-w-100">Hikes Planned.</h2>
-		<% @user.planned_hikes.each do |hike| %>
-			<ul class="no-style p-0">
-				<li class="color-slight-pink p-2 mb-1"><%= link_to "#{hike.title}", hike_path(hike), :class =>"color-burnt-orange mb-1" %> | <%= display_date(hike) %></li>
-			</ul>
-	<% end %>		
-	</div>
-		
-	<div class="justify-content-center align-items-center col-12 col-md-6 col-lg-4 show-card text-center p-4 border border-left-0 border-white">
-		<h2 class="text-white font-w-100">Hikes Joined.</h2>
-		<% @user.hikes.each do |hike| %>
-		<ul class="no-style p-0">
-			<li class="color-slight-pink p-2 mb-1"><%= link_to "#{hike.title}", hike_path(hike), :class =>"color-burnt-orange mb-1" %> | <%= display_date(hike) %></li>
-		</ul>
-	<% end %>		
-	</div>
-</div>
 
