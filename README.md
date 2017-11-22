@@ -4,7 +4,7 @@ HikeIt is a Rails social hiking application that allows a User to plan a hiking 
 
 ## Usage ##
 
-After cloning and installing user ```rails s``` to start a server and type into your browser ```localhost:3000```
+After cloning and installing use command ```rails s``` to start a server and type into your browser ```localhost:3000```
 Sign up with a valid email and password or Facebook. Once logged in choose to 'plan hike' or 'find hike'. Plan hike will present you with a form to create a new hike in the database once submitted. Clicking on the 'find hike' button from the home page or hikes in the navbar will display all joinable hikes in the database. Click to find out more information about the hike or click directly on the 'join' button to be added as a hiker for that upcoming event.
 
 ## Installation ##
