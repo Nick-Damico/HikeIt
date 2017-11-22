@@ -1,0 +1,19 @@
+<%= form_for(user) do |f| %>
+
+	<div class="field">
+	<%= f.label :trail_name %><br>
+	<%= f.text_field :trail_name %>
+	</div>
+
+	<div class="field">
+	<%= f.label :bio %><br>
+	<%= f.text_area :bio %>
+	</div>
+
+	<div class="field">
+	<%= f.label :profile_image %><br>
+	<%= f.text_field :profile_image %>		
+	</div>
+
+	<%= f.submit :class => "btn-login-form text-white mt-2 mb-1 btn" %>
+<% end %>
