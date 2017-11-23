@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!
+  before_action :authenticate_profile_owner
 
   def show
   	@user = User.find_by(id: params[:id])
@@ -15,7 +16,7 @@ class UsersController < ApplicationController
   def update
   	@user = User.find_by(id: params[:id])
   	if @user.update(user_params)
-  		redirect_to user_path(@user)
+  		redirect_to user_path(@user), notice: "profile updated"
   	else
   		render :show
   	end
@@ -30,5 +31,11 @@ class UsersController < ApplicationController
   		:bio,
   		:profile_image
   		)
+  end
+
+  def authenticate_profile_owner
+    if current_user != User.find_by(id: params[:id])
+      redirect_to hikes_path, alert: "task not available"
+    end
   end
 end
