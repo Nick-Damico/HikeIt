@@ -5,9 +5,7 @@ class HikesController < ApplicationController
 
 	def index
 		if params[:user_id] && @hikes = User.find_by(id: params[:user_id]).hikes
-			if hikes_lead = Hike.all.find_by(leader_id: params[:user_id])
-				@hikes <<  hikes_lead 
-			end
+			@hikes			
 		else
 			@hikes = Hike.all
 		end		
@@ -22,9 +20,8 @@ class HikesController < ApplicationController
 	end
 
 	def create
-		@hike = Hike.new(hike_params)
-		@hike.hiking_trail = HikingTrail.find_or_create_by(id: params[:hike][:hiking_trail_id]) if @hike.hiking_trail_id.nil?
-		@hike.leader_id = current_user.id if @hike.leader_id.nil?
+		@hike = Hike.new(hike_params)	
+		@hike.find_or_add_leader(current_user)
 		if @hike.save
 			@hike.users.push(current_user)
 			redirect_to hike_path(@hike.id), notice: "Hike successfully created!"
