@@ -23,6 +23,15 @@ class Hike < ApplicationRecord
 		end
 	end
 
+	def hiking_trail_id=(hiking_trail_id)
+		trail = HikingTrail.find_by(id: hiking_trail_id)
+		self.hiking_trail = trail
+	end
+
+	def find_or_add_leader(user)
+		self.leader_id = user.id if self.leader_id.nil?
+	end
+
 	private 
 
 	def valid_hike_date		
