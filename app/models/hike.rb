@@ -23,13 +23,23 @@ class Hike < ApplicationRecord
 		end
 	end
 
+	def find_or_add_leader(user)
+		self.leader_id = user.id if self.leader_id.nil?
+	end
+
 	def hiking_trail_id=(hiking_trail_id)
 		trail = HikingTrail.find_by(id: hiking_trail_id)
 		self.hiking_trail = trail
 	end
 
-	def find_or_add_leader(user)
-		self.leader_id = user.id if self.leader_id.nil?
+	def join_or_leave_hike(user)
+		if self.users.include?(user)
+			self.users.delete(user)
+			"You've left planned hike #{self.title}."
+		else
+			self.users.push user
+			"You've joined #{self.title}."
+		end
 	end
 
 	private 

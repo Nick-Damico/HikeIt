@@ -31,19 +31,11 @@ class HikesController < ApplicationController
 	end
 
 	def join
-		if !@hike.users.include?(current_user)
-				@hike.users.push current_user
-				flash[:notice] = "You've joined #{@hike.title}."
-		end
-		redirect_to hike_path(@hike)
+		redirect_to hike_path(@hike), notice: @hike.join_or_leave_hike(current_user)
 	end
 
 	def leave
-		if @hike.users.include?(current_user)
-			 @hike.users.delete(current_user)
-			 flash[:notice] = "You've left planned hike #{@hike.title}."
-		end
-		redirect_to hikes_path
+		redirect_to hikes_path, notice: @hike.join_or_leave_hike(current_user)
 	end
 
 	def show
