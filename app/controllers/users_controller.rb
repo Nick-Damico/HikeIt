@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!
-  before_action :authenticate_profile_owner
+  before_action :authenticate_profile_owner, only: [:edit]
 
   def show
   	@user = User.find_by(id: params[:id])

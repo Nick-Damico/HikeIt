@@ -18,10 +18,8 @@
 		<%= display_notes(@hike) %>
 
 		<ul class="no-style p-0">
-			<h3><u>Hikers Joined</u></h3>
-			<% @hike.users.each do |user| %>
-				<li><%= user.email %></li>
-			<% end %>
+			<h3><u>Hikers Joined</u></h3>			
+			<%= render partial: 'users/users', collection: @hike.users, as: :user %>			
 		</ul>
 
 		<%= render partial: 'show-btns', locals: { hike: @hike } %>		
