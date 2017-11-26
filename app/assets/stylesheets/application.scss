@@ -37,8 +37,6 @@ select#hike_hiking_trail_attributes_feature_id { width: 100%; }
 
 .dark-mtn-blue { background: rgba(#516177, .75); }
 
-
-
 // =============================================
 //	TEXT STYLES
 // =============================================
@@ -136,6 +134,12 @@ select#hike_hiking_trail_attributes_feature_id { width: 100%; }
 .index-hike-card-container {
 	background: linear-gradient(rgba(85,98,112,.5),rgba(255,107,107,.5)),url('index-bg') no-repeat center center;
 	position: relative;
+}
+
+.index-hike-card:hover {
+	box-shadow: 0 19px 38px rgba(0,0,0,.3), 0 15px 12px rgba(0,0,0,.22);
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
 }
 
 .btn-plan-hike {
@@ -339,6 +343,8 @@ table.table {
     	padding-left: 0;
     }
  }
+
+
 
 // =============================================
 //	MEDIA QUERIES
