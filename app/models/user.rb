@@ -13,17 +13,21 @@ class User < ApplicationRecord
   	Hike.all.where(leader_id: self.id)
   end
 
+  def self.set_email(auth)
+    if auth.info.email
+        auth.info.email
+    else
+        auth.info.name.split(" ").join("_").downcase + "@hikeit.net"
+    end
+  end
+
   def self.from_omniauth(auth)
     user = where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email, 
-      user.profile_image = auth.info.image,
+      user.profile_image = auth.info.image,       
       user.password = Devise.friendly_token[0,20]
     end    
-
-    if user.profile_image.nil?
-      user.profile_image = auth.info.image
-      user.save
-    end  
+    user.email = set_email(auth)
+    user.save
     user
   end
   
