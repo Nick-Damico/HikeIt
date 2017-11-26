@@ -16,6 +16,6 @@ Rails.application.routes.draw do
 
 	# StaticController
 	root 'static#landing'
-	get 'static/home'
+	get 'home', :to => 'static#home', :as => 'static_home'
 
 end
