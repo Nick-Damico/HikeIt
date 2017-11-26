@@ -33,6 +33,7 @@ gem 'devise'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'nokogiri'
+gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
 gem 'bootstrap', '~> 4.0.0.beta2'
