@@ -6,9 +6,7 @@ class HikingTrail < ApplicationRecord
 	validates :name, :location, :area, :distance, :presence => true
 	validates :name, :uniqueness => true
 	before_validation :rating_to_integer
-	
-	scope :by_distance, -> { order(:distance) }
-	scope :by_alphabet, -> { order(:name) }
+
 	scope :by_area, -> (trail_area) { where('area = ?', trail_area) }
 	
 	TRAIL_AREAS = [
