@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171113162635) do
+ActiveRecord::Schema.define(version: 20171128021825) do
 
   create_table "features", force: :cascade do |t|
     t.string "title"
@@ -29,15 +29,6 @@ ActiveRecord::Schema.define(version: 20171113162635) do
     t.datetime "updated_at", null: false
     t.integer "leader_id"
     t.index ["hiking_trail_id"], name: "index_hikes_on_hiking_trail_id"
-  end
-
-  create_table "hikes_users", id: false, force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "hike_id", null: false
-    t.integer "user_id_id"
-    t.integer "hike_id_id"
-    t.index ["hike_id_id"], name: "index_hikes_users_on_hike_id_id"
-    t.index ["user_id_id"], name: "index_hikes_users_on_user_id_id"
   end
 
   create_table "hiking_trails", force: :cascade do |t|
@@ -60,6 +51,7 @@ ActiveRecord::Schema.define(version: 20171113162635) do
     t.integer "hike_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "hike_type", default: 0
     t.index ["hike_id", "user_id"], name: "index_planned_hikes_on_hike_id_and_user_id"
   end
 
