@@ -22,13 +22,6 @@ class Hike < ApplicationRecord
 			end
 		end
 	end
-	
-	# def planned_hikes_attributes=(planned_hikes_attributes)		
-	# 	planned_hikes_attributes.each do |key, value| 
-	# 		binding.pry
-	# 		planned_hike = self.planned_hikes.build(hike_type: value[:hike_type].to_i)
-	# 	end
-	# end
 
 	def find_or_add_leader(user)
 		self.leader_id = user.id if self.leader_id.nil?
@@ -41,6 +34,14 @@ class Hike < ApplicationRecord
 		else
 			self.users.push user
 			"You've joined #{self.title}."
+		end
+	end
+
+	def planned_hikes_attributes=(attributes)
+		attributes.each do |i, attr|
+			planned_hike = self.planned_hikes.last
+			planned_hike.hike_type = attr[:hike_type].to_i
+			planned_hike.save
 		end
 	end
 

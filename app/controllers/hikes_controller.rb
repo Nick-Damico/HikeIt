@@ -19,11 +19,13 @@ class HikesController < ApplicationController
 		end
 	end
 
-	def create
+	def create		
 		@hike = Hike.new(hike_params)	
-		# @hike.find_or_add_leader(current_user)
-		if @hike.save
+		@hike.find_or_add_leader(current_user)
+		if @hike.save			
 			@hike.users.push(current_user)
+			@hike.planned_hikes_attributes=(params[:hike][:planned_hikes_attributes])	
+			binding.pry		
 			redirect_to hike_path(@hike.id), notice: "Hike successfully created!"
 		else
 			render :new
@@ -53,6 +55,7 @@ class HikesController < ApplicationController
 
 	def update	
 		if @hike.update(hike_params)
+			@hike.planned_hikes_attributes=(params[:hike][:planned_hikes_attributes])			
 			redirect_to hike_path(@hike)
 		else
 			render :edit
@@ -74,7 +77,7 @@ class HikesController < ApplicationController
 					:notes,
 					:leader_id,
 					:hiking_trail_id,
-					:hiking_trail_attributes => [:name, :location, :area, :distance, :feature_id]
+					:hiking_trail_attributes => [:name, :location, :area, :distance, :feature_id],
 				)
 		end
 
