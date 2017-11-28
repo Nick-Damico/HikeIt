@@ -4,6 +4,17 @@
 <%= form_for(hike, :html => {:class => "build-hike-form dark-mtn-blue p-3 text-white rounded mb-4 border border-white"}) do |f| %>
 	<%= f.hidden_field :leader_id, :value => hike.leader_id %>
 
+	<div class="row text-center">
+		<div class="col">
+		<%= fields_for :planned_hikes, hike.planned_hikes.build do |planned_hike_builder| %>	
+			<%= planned_hike_builder.radio_button :hike_type, '0', :checked => true %>
+			<%= label :hike_type, "Day Hike", :class => "mr-2" %>					
+			<%= planned_hike_builder.radio_button :hike_type, '1' %>
+			<%= label :hike_type, "Overnight Hike" %>
+		<% end %>		
+		</div>
+	</div>
+
 	<div class="field mt-3 text-center">
 		<%= f.label :hiking_trail_id %><br />
 		<%= link_to "Trail index", hiking_trails_path, :class => "text-white" %>
@@ -16,7 +27,6 @@
 			<fieldset class="border border-white p-3">
 				<legend class="text-center font-w-100 border border-white">Hiking Trail</legend>
 				<%= f.fields_for :hiking_trail, @hike.build_hiking_trail do |ht_builder| %>
-
 					<div class="row text-center">
 						<div class="col">
 							<div class="field">
