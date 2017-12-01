@@ -3,7 +3,7 @@ class HikingTrailsController < ApplicationController
   before_action :authenticate_user!, :except => [:show, :index]
 
   def index
-  	@hiking_trails = HikingTrail.all
+    @hiking_trails = HikingTrail.getTrails(params)
   end
 
   def show  
