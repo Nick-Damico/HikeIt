@@ -25,7 +25,6 @@ class HikesController < ApplicationController
 		if @hike.save			
 			@hike.users.push(current_user)
 			@hike.planned_hikes_attributes=(params[:hike][:planned_hikes_attributes])	
-			binding.pry		
 			redirect_to hike_path(@hike.id), notice: "Hike successfully created!"
 		else
 			render :new
@@ -64,7 +63,7 @@ class HikesController < ApplicationController
 
 	def destroy
    		@hike.destroy
-    	redirect_to static_home_path
+    	redirect_to home_path
  	end
 
 	private	

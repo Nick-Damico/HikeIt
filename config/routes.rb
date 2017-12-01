@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/show'
 
   	devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
@@ -16,6 +15,6 @@ Rails.application.routes.draw do
 
 	# StaticController
 	root 'static#landing'
-	get 'home', :to => 'static#home', :as => 'static_home'
+	get '/home', :to => 'static#home'
 
 end
