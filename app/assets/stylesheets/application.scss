@@ -31,9 +31,9 @@ html,body {
  overflow-y: scroll;
 }
 
-select#hike_hiking_trail_attributes_area { width: 100%;}
+select #hike_hiking_trail_attributes_area { width: 100%;}
 
-select#hike_hiking_trail_attributes_feature_id { width: 100%; }
+select #hike_hiking_trail_attributes_feature_id { width: 100%; }
 
 .dark-mtn-blue { background: rgba(#516177, .75); }
 
@@ -309,7 +309,6 @@ table.table {
 	}
 }
 
-
 // =============================================
 //	ERRORS | FLASH MESSAGES
 // =============================================
@@ -344,6 +343,11 @@ table.table {
     }
  }
 
+.select_container {
+	display: block;
+	background: #ececec;
+	padding-left: 5px;
+}
 
 
 // =============================================

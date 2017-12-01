@@ -1,4 +1,4 @@
-<select name="attribute">
+<select name="attribute" class="sel">
 	<option disabled="disabled" selected="selected">select filter by:</option>
 	<optgroup label="Trail Area">
 		<% HikingTrail::TRAIL_AREAS.each do |area| %>			<option value='<%= "#{area}"%>'><%= area %></option>

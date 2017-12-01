@@ -62,7 +62,7 @@ class HikingTrail < ApplicationRecord
 		if !params[:attribute].blank? 
 			attribute_value = params[:attribute]
 			if TRAIL_AREAS.include?(attribute_value)
-		    	self.by_area(attribute_value)
+		    	self.by_area(attribute_value).order(:name)
 		    elsif check_difficulty(attribute_value)
 		    	self.get_trails_by_difficulty(attribute_value)
 		    elsif TRAIL_LENGTH.include?(attribute_value)

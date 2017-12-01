@@ -2,11 +2,11 @@
 
 <h1 class="text-white font-w-100 text-center">Hiking Trials of GSMNP</h1>
 
-<div>
-	<h3 class="font-w-100 text-white">Filter Hiking Trails:</h3>
+<div class="select_container rounded-top">
+	<h3 class="font-w-100 mb-0">Filter Hiking Trails:</h3>
 	<%= form_tag("/hiking_trails", method: :get) do %>
 			<%= render 'trail_select' %>
-			<%= submit_tag "Filter" %>
+			<%= submit_tag "Filter", :class => "card-btn btn btn-login-form text-white rounded-0" %>
 	<% end %>
 </div>
 
