@@ -14,6 +14,8 @@ git clone https://github.com/Nick-Damico/HikeIt.git
 cd HikeIt
 bundle install
 rails db:migrate
+# Make sure to populate database with hiking trails, use following command #
+rails db:seed
 rails s
 ```
 

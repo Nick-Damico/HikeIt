@@ -6,13 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(
-	trail_name: Faker::TwinPeaks.character,
-	email: "bob@twinpeaks.com",
-	password: "specialsecretpassword",
-	bio: Faker::TwinPeaks.quote,
-	location: 
-#=> "Black Lodge"
+# Instantiates the ScraperService
+scraper = ScraperService.new("http://www.hikinginthesmokys.com/location.htm")
+# Scraper will collect data from the above URL and create HikingTrail class instances
+scraper.build_hiking_trails
+# Scraper will gather images for the instances of the HikingTrail model and add them to the database if image_url is nil.
+scraper.get_image_from_url
 
-
-	)
