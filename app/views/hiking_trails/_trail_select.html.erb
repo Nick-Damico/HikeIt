@@ -1,0 +1,18 @@
+<select name="attribute">
+	<option disabled="disabled" selected="selected">select filter by:</option>
+	<optgroup label="Trail Area">
+		<% HikingTrail::TRAIL_AREAS.each do |area| %>			<option value='<%= "#{area}"%>'><%= area %></option>
+		<% end %>
+	</optgroup>
+	<optgroup label="Trail Difficulty">
+		<option value="easy">Easy (less than 5)</option>
+		<option value="moderate">Moderate (between 5 &amp; 10)</option>
+		<option value="strenous">Strenous (greater than 10)</option>	
+	</optgroup>
+	<optgroup label="Trail R/T Miles">
+		<option value="short">Less than 5(mi.)</option>
+		<option value="medium">5(mi.) to 9(mi.)</option>
+		<option value="long">10(mi.) to 15(mi.)</option>
+		<option value="extreme">more than 15(mi.)</option>
+	</optgroup>
+</select>

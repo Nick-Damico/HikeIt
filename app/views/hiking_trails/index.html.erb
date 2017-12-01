@@ -2,4 +2,14 @@
 
 <h1 class="text-white font-w-100 text-center">Hiking Trials of GSMNP</h1>
 
+<div>
+	<h3 class="font-w-100 text-white">Filter Hiking Trails:</h3>
+	<%= form_tag("/hiking_trails", method: :get) do %>
+			<%= render 'trail_select' %>
+			<%= submit_tag "Filter" %>
+	<% end %>
+</div>
+
+
 <%= render :partial => "hiking_trails", locals: { hiking_trails: @hiking_trails } %>
+
