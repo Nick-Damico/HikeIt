@@ -377,6 +377,10 @@ table.table {
 		left: -25px;
 		top: -28px;
 	}
+
+	.home_container {
+		margin-top: 4rem;
+	}
  }
 
  // @media (min-width: 768px)
@@ -399,7 +403,9 @@ table.table {
 
 // @media (min-width: 992px)
 @include media-breakpoint-up(lg) { 
-
+	.home_container {
+		margin-top: 8rem;
+	}
  }
 
 // @media (min-width: 1200px)
