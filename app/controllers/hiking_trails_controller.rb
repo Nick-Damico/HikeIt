@@ -17,7 +17,7 @@ class HikingTrailsController < ApplicationController
   def create
   	@hiking_trail = HikingTrail.new(hiking_trail_params)
     if @hiking_trail.save
-      redirect_to hiking_trail_url(@hiking_trail)
+      redirect_to hiking_trail_url(@hiking_trail), notice: "Hiking Trail: #{@hiking_trail.name} added to database."
     else
       render :new
     end
