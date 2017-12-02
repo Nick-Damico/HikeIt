@@ -32,9 +32,10 @@ html,body {
  overflow-y: scroll;
 }
 
-select #hike_hiking_trail_attributes_area { width: 100%;}
-
-select #hike_hiking_trail_attributes_feature_id { width: 100%; }
+select#hike_hiking_trail_attributes_feature_id,
+select#hike_hiking_trail_attributes_area { 
+	width: 100%; 
+}
 
 .dark-mtn-blue { background: rgba(#516177, .75); }
 
