@@ -299,6 +299,7 @@ tbody.trail-table tr:nth-child(2n-1) {
 }
 
 table.table {
+	-webkit-overflow-scrolling: touch;
 	th {
 		font-weight: 100;
 	}
