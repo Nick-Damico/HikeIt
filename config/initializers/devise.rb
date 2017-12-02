@@ -252,7 +252,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"], {:client_options => {:ssl => {:ca_path => "/etc/ssl/certs"}}}
-
+  config.secret_key = 'ad6951820ff48bff6185bdf2cf5951b221ab29714ed76196d22e55b58e303ab03585b863c3924ec0661b445c203b3abd98b4c5ef085e2ebfd52a7443c4816e69'
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
