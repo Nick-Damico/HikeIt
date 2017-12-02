@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
 		else
 		  "application"
 		end
+		
 	end
 
 	def redirect_to_home
