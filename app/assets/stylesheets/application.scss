@@ -24,6 +24,7 @@ body.application-layout {
 body.landing-login-signup,
 body.application-layout {
 	background-size: cover;
+	background-position: 19%;
 }
 
 html,body {
@@ -355,8 +356,6 @@ table.table {
 // =============================================
 
 @include media-breakpoint-up(xs) { 
-
-	body { background-position-x: 19%; }
 
 	.about-text-sign_in,
 	.about-text-login {
