@@ -12,6 +12,8 @@ class Hike < ApplicationRecord
 	
 	scope :by_date, -> { order(:hike_date) }
 	scope :next_three_days, -> { Hike.where("hike_date < ?",Time.now + 3.days) }
+	scope :day_hikes, -> { Hike.joins(:planned_hikes).where( planned_hikes: { hike_type: 'day_hike'})  }
+	scope :overnight_hikes, -> { Hike.joins(:planned_hikes).where( planned_hikes: { hike_type: 'over_night'})  }
 	
 	def hiking_trail_attributes=(hiking_trail_attributes)
 		if hiking_trail_attributes.values.any? { |v| !v.empty? }			
@@ -51,6 +53,14 @@ class Hike < ApplicationRecord
 		if !hike_date.nil? && hike_date < Time.now
 			errors.add(:hike_date, "can't be in the past")
 		end
+	end
+
+	def self.get_day_hikes
+		day_hikes.uniq
+	end
+
+	def self.get_overnight_hikes
+		overnight_hikes.uniq
 	end
 
 end

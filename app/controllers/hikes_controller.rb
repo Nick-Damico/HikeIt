@@ -31,14 +31,6 @@ class HikesController < ApplicationController
 		end
 	end
 
-	def join
-		redirect_to hike_path(@hike), notice: @hike.join_or_leave_hike(current_user)
-	end
-
-	def leave
-		redirect_to hikes_path, notice: @hike.join_or_leave_hike(current_user)
-	end
-
 	def show
 		if params[:user_id]
 			@user = User.find_by(id: params[:user_id])
@@ -65,6 +57,25 @@ class HikesController < ApplicationController
    		@hike.destroy
     	redirect_to home_path
  	end
+
+ 	def day_hike 		
+ 		@hikes = Hike.get_day_hikes
+ 		render :index
+ 	end
+
+ 	def overnight_hike
+ 		@hikes = Hike.get_overnight_hikes
+ 		render :index
+ 	end
+
+
+ 	def join
+		redirect_to hike_path(@hike), notice: @hike.join_or_leave_hike(current_user)
+	end
+
+	def leave
+		redirect_to hikes_path, notice: @hike.join_or_leave_hike(current_user)
+	end
 
 	private	
 		def hike_params
