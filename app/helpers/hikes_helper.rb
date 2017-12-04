@@ -1,5 +1,13 @@
 module HikesHelper
 
+	def brief_description(description)
+		description.slice(0, 40) + '...';
+	end
+
+	def brief_title(title)
+		title.slice(0,33) + '...';
+	end
+
 	def display_date(hike)
 		hike.hike_date.strftime("%B %d, %Y")
 	end
@@ -16,12 +24,20 @@ module HikesHelper
 		end
 	end
 
-	def brief_description(description)
-		description.slice(0, 40) + '...';
+	def night_banner_builder
+		content_tag(:div, :class => "hike-status-banner hike-status-night") do
+			content_tag(:span, "OverNight", :class => "text-white font-w-100")
+		end
 	end
 
-	def brief_title(title)
-		title.slice(0,33) + '...';
+	def day_banner_builder
+		content_tag(:div, :class => "hike-status-banner hike-status-day") do 
+			content_tag(:span, "DayHike", :class => "text-white font-w-100")
+		end
+	end
+
+	def hike_banner(planned_hike)
+		planned_hike.day_hike? ? day_banner_builder : night_banner_builder
 	end
 end
 

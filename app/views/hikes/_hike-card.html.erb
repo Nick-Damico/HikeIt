@@ -7,12 +7,13 @@
 	<% end %>
 		
 	<div class="col">
-		<h3><%= link_to "#{hike.title}", hike_path(hike), :class => "font-w-300 color-burnt-orange" %></h3>
+		<h3><%= link_to "#{brief_title(hike.title)}", hike_path(hike), :class => "font-w-300 color-burnt-orange" %></h3>
 		<h4 class="text-white font-w-100"><%= "#{hike.hiking_trail.name}" %></h4>
 
-		<ul class="no-style pl-0 font-w-100 color-slight-pink">
-			<li><%= hike.description %></li>
-			<li><%= display_date(hike) %></li>
-		</ul>				
+		<ul class="no-style pl-0 font-w-100 color-slight-pink mb-1">
+			<li><%= brief_description(hike.description) %></li>
+			<li class="card-date-color"><%= display_date(hike) %></li>
+		</ul>
+		<%= hike_banner(hike.planned_hikes.last) %>			
 	</div>
 </div>
