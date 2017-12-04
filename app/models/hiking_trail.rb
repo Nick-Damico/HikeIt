@@ -1,5 +1,4 @@
 class HikingTrail < ApplicationRecord
-
 	has_many :hikes
 	belongs_to :feature
 

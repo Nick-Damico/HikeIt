@@ -1,5 +1,4 @@
 class Hike < ApplicationRecord
-	
 	has_many :planned_hikes, dependent: :delete_all
 	has_many :users, through: :planned_hikes
 	belongs_to :leader, :class_name => "User", :foreign_key => 'leader_id'
