@@ -16,5 +16,12 @@ module HikesHelper
 		end
 	end
 
+	def brief_description(description)
+		description.slice(0, 40) + '...';
+	end
+
+	def brief_title(title)
+		title.slice(0,33) + '...';
+	end
 end
 
