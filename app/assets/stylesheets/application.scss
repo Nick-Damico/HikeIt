@@ -158,6 +158,9 @@ select#hike_hiking_trail_attributes_area {
 // =============================================
 //	COMPONENTS 
 // =============================================
+.container {
+	-webkit-overflow-scrolling: touch;
+}
 
 .input-field {
 	max-width: 380px;
@@ -358,6 +361,7 @@ tbody.trail-table tr:nth-child(2n-1) {
 }
 
 table.table {
+
 	th {
 		font-weight: 100;
 	}
