@@ -24,6 +24,13 @@ module HikesHelper
 		end
 	end
 
+	def hike_leader(hike, user)
+		if hike.leader_id.nil?
+			hidden_field_tag("hike[leader_id]", "#{user.id}", :id => "hike_leader_id")
+		else
+			hidden_field_tag("hike[leader_id]", "#{hike.leader_id}", :id => "hike_leader_id")
+		end
+	end
 	def night_banner_builder
 		content_tag(:div, :class => "hike-status-banner hike-status-night") do
 			content_tag(:span, "OverNight", :class => "text-white font-w-100")

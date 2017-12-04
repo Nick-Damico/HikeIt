@@ -1,8 +1,7 @@
  
 <%= render partial: 'hike-errors', locals: { hike: @hike } %>
-
 <%= form_for(hike, :html => {:class => "build-hike-form dark-mtn-blue p-3 text-white rounded mb-4 border border-white"}) do |f| %>
-	<%= f.hidden_field :leader_id, :value => hike.leader_id %>
+	<%= hike_leader(hike,current_user) %>
 
 	<div class="field mt-3 text-center">
 		<%= f.label :hiking_trail_id %><br />
