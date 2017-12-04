@@ -21,7 +21,6 @@ class HikesController < ApplicationController
 
 	def create		
 		@hike = Hike.new(hike_params)	
-		@hike.find_or_add_leader(current_user)
 		if @hike.save			
 			@hike.users.push(current_user)
 			@hike.planned_hikes_attributes=(params[:hike][:planned_hikes_attributes])	
