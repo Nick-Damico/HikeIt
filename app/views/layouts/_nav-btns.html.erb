@@ -4,6 +4,6 @@
 <% else %>
 	<nav class="navbar navbar-landing justify-content-between">
 		<%= button_to "Sign up", new_user_registration_path, :method => :get, :class => "btn btn-color-sign_up form-inline" %>
-		<%= button_to "Log in", new_user_session_path, :class => "btn btn-color-login text-white form-inline ml-2" %>
+		<%= link_to "Log in", new_user_session_path, :class => "btn btn-color-login text-white form-inline ml-2" %>
   	</nav>
 <% end %>
