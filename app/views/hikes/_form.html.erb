@@ -1,7 +1,19 @@
  
 <%= render partial: 'hike-errors', locals: { hike: @hike } %>
+
 <%= form_for(hike, :html => {:class => "build-hike-form dark-mtn-blue p-3 text-white rounded mb-4 border border-white"}) do |f| %>
 	<%= hike_leader(hike,current_user) %>
+
+	<div class="row text-center">
+		<div class="col">
+		<%= f.fields_for :planned_hikes, hike.planned_hikes.build do |planned_hike_builder| %>	
+			<%= planned_hike_builder.radio_button :hike_type, '0' %>
+			<%= label :hike_type, "Day Hike", :class => "mr-2" %>					
+			<%= planned_hike_builder.radio_button :hike_type, '1' %>
+			<%= label :hike_type, "Overnight Hike" %>
+		<% end %>		
+		</div>
+	</div>
 
 	<div class="field mt-3 text-center">
 		<%= f.label :hiking_trail_id %><br />
@@ -90,17 +102,6 @@
 					<%= f.time_select :hike_time %>
 				</div>
 			</div>
-	</div>
-
-		<div class="row text-center">
-		<div class="col">
-		<%= f.fields_for :planned_hikes, hike.planned_hikes.build do |planned_hike_builder| %>	
-			<%= planned_hike_builder.radio_button :hike_type, '0' %>
-			<%= label :hike_type, "Day Hike", :class => "mr-2" %>					
-			<%= planned_hike_builder.radio_button :hike_type, '1' %>
-			<%= label :hike_type, "Overnight Hike" %>
-		<% end %>		
-		</div>
 	</div>
 	
 	<div class="field mt-3 text-center">
