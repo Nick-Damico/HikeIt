@@ -46,6 +46,11 @@ class Hike < ApplicationRecord
 		end
 	end
 
+	def user_id=(id)
+		user = User.find_by(id: id)
+		self.users << user
+	end
+
 	private 
 
 	def valid_hike_date		
