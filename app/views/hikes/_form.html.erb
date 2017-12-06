@@ -15,6 +15,13 @@
 		</div>
 	</div>
 
+	<div class="col">
+		<%= f.radio_button :private, true %>
+		<%= f.label :private, "Private" %>
+		<%= f.radio_button :private,  false %>
+		<%= f.label :private, "Public" %>
+	</div>
+
 	<div class="field mt-3 text-center">
 		<%= f.label :hiking_trail_id %><br />
 		<%= link_to "Trail index", hiking_trails_path, :class => "text-white" %>

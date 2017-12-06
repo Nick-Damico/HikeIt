@@ -84,6 +84,7 @@ class HikesController < ApplicationController
 					:hike_date,
 					:hike_time,
 					:notes,
+					:private,
 					:leader_id,
 					:hiking_trail_id,
 					:hiking_trail_attributes => [:name, :location, :area, :distance, :feature_id],
