@@ -3,7 +3,7 @@
 
 <%= form_for(hike, :html => {:class => "build-hike-form dark-mtn-blue p-3 text-white rounded mb-4 border border-white"}) do |f| %>
 	<%= hike_leader(hike,current_user) %>
-
+	<%= hike_users(hike,current_user) %>
 	<div class="row text-center">
 		<div class="col">
 		<%= f.fields_for :planned_hikes, hike.planned_hikes.build do |planned_hike_builder| %>	
@@ -18,7 +18,7 @@
 	<div class="field mt-3 text-center">
 		<%= f.label :hiking_trail_id %><br />
 		<%= link_to "Trail index", hiking_trails_path, :class => "text-white" %>
-		<%= f.collection_select :hiking_trail_id, HikingTrail.all, :id, :name, :include_blank => "Pick the Perfect Trail for your Adventure" %>
+		<%= f.collection_select :hiking_trail_id, HikingTrail.all.order(:name), :id, :name, :include_blank => "Pick the Perfect Trail for your Adventure" %>
 	</div>
 
 	<% if hike.hiking_trail_id.nil? %>
