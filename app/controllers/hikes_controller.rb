@@ -19,10 +19,9 @@ class HikesController < ApplicationController
 		end
 	end
 
-	def create		
+	def create
 		@hike = Hike.new(hike_params)	
-		if @hike.save			
-			@hike.users.push(current_user)
+		if @hike.save
 			@hike.planned_hikes_attributes=(params[:hike][:planned_hikes_attributes])	
 			redirect_to hike_path(@hike.id), notice: "Hike successfully created!"
 		else
@@ -79,6 +78,7 @@ class HikesController < ApplicationController
 	private	
 		def hike_params
 			params.require(:hike).permit(
+					:user_id,
 					:title,
 					:description,
 					:hike_date,
