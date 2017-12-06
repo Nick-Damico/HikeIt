@@ -14,7 +14,7 @@ class HikingTrail < ApplicationRecord
 
 	scope :distance_short, -> { where('distance < ?',5) }
 	scope :distance_medium, -> { where('distance > ? AND distance < ?',4,10) }
-	scope :distance_long, -> { where('distance > ? AND distance < ?',9, 16) }
+	scope :distance_long, -> { where('distance > ? AND distance <= ?',9, 15) }
 	scope :distance_extreme, -> { where('distance > ?',15) }
 	
 	TRAIL_AREAS = [
