@@ -51,9 +51,9 @@ class HikesController < ApplicationController
 		end
 	end
 
-	def destroy
+	def destroy		
    		@hike.destroy
-    	redirect_to home_path
+    	redirect_to home_path, notice: "You Deleted Hike: #{@hike.title}."
  	end
 
  	def day_hike 		
