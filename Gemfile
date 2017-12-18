@@ -66,6 +66,7 @@ group :test do
 end
 group :test, :development do
   gem 'sqlite3'
+  gem 'figaro'
 end
 
 group :production do
