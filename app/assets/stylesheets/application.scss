@@ -151,10 +151,16 @@ select#hike_hiking_trail_attributes_area {
 }
 
 .btn-find-hike {
+	background-color: rgba(255,107,107,.5);
+	background-image:url('btn-find-hike');
 	background: linear-gradient(rgba(85,98,112,.5),rgba(255,107,107,.5)),url('btn-find-hike') no-repeat center center;
 	background-size: cover;
+	transition: all .8s ease-in-out;
 }
-
+.btn-find-hike:active,
+.btn-plan-hike:active {
+	background-color: rgba(255,107,107,.5);
+}
 // =============================================
 //	COMPONENTS
 // =============================================
