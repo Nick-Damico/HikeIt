@@ -58,6 +58,7 @@ class HikesController < ApplicationController
 
  	def day_hike
  		@hikes = Hike.get_day_hikes
+
  		render :index
  	end
 
