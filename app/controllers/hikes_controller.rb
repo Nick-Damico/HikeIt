@@ -5,14 +5,14 @@ class HikesController < ApplicationController
 
 	def index
 		if params[:user_id] && @hikes = User.find_by(id: params[:user_id]).hikes
-			@hikes			
+			@hikes
 		else
 			@hikes = Hike.all
-		end		
+		end
 	end
 
 	def new
-		if @user = User.find_by(id: params[:user_id])			
+		if @user = User.find_by(id: params[:user_id])
 			@hike = @user.hikes.build(leader_id: @user.id)
 		else
 			@hike = Hike.new
@@ -20,9 +20,9 @@ class HikesController < ApplicationController
 	end
 
 	def create
-		@hike = Hike.new(hike_params)	
+		@hike = Hike.new(hike_params)
 		if @hike.save
-			@hike.planned_hikes_attributes=(params[:hike][:planned_hikes_attributes])	
+			@hike.planned_hikes_attributes=(params[:hike][:planned_hikes_attributes])
 			redirect_to hike_path(@hike.id), notice: "Hike successfully created!"
 		else
 			render :new
@@ -32,31 +32,31 @@ class HikesController < ApplicationController
 	def show
 		if params[:user_id]
 			@user = User.find_by(id: params[:user_id])
-			@hike = @user.hikes.find_by(id: params[:id]) 
+			@hike = @user.hikes.find_by(id: params[:id])
 			if @hike.nil?
 				redirect_to user_hikes_path(@user), alert: "Hike not found"
 			end
 		end
 	end
 
-	def edit	
+	def edit
 	end
 
-	def update	
+	def update
 		if @hike.update(hike_params)
-			@hike.planned_hikes_attributes=(params[:hike][:planned_hikes_attributes])			
+			@hike.planned_hikes_attributes=(params[:hike][:planned_hikes_attributes])
 			redirect_to hike_path(@hike)
 		else
 			render :edit
 		end
 	end
 
-	def destroy		
+	def destroy
    		@hike.destroy
     	redirect_to home_path, notice: "You Deleted Hike: #{@hike.title}."
  	end
 
- 	def day_hike 		
+ 	def day_hike
  		@hikes = Hike.get_day_hikes
  		render :index
  	end
@@ -75,7 +75,7 @@ class HikesController < ApplicationController
 		redirect_to hikes_path, notice: @hike.join_or_leave_hike(current_user)
 	end
 
-	private	
+	private
 		def hike_params
 			params.require(:hike).permit(
 					:user_id,
@@ -96,7 +96,7 @@ class HikesController < ApplicationController
 		end
 
 		def authenticate_as_leader
-  			redirect_to root_path if @hike.leader_id != current_user.id  				
+  			redirect_to root_path if @hike.leader_id != current_user.id
   		end
-		
+
 end
