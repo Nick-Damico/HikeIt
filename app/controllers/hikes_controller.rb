@@ -9,6 +9,10 @@ class HikesController < ApplicationController
 		else
 			@hikes = Hike.all
 		end
+		respond_to do |format|
+			format.html
+			format.json { render json: @hikes, status: 200 }
+		end
 	end
 
 	def new
