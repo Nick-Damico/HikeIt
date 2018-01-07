@@ -10,6 +10,6 @@
 		<%= button_to "Plan Hike", new_user_hike_path(current_user), :method => :get, :class => "btn btn-plan-hike text-white border border-plan grow" %>
 	</div>
 	<div class="col-sm-12 col-lg">
-		<%= button_to "Find Hike", hikes_path, :method => :get, :class => "btn btn-find-hike text-white border border-plan grow" %>
+		<%= button_to "Find Hike", hikes_path, :method => :get, :id => "findHikeBtn", :class => "btn btn-find-hike text-white border border-plan grow" %>
 	</div>
 </div>
