@@ -1,22 +1,14 @@
-<script id="hike-index-template" type="text/x-handlebars-template">
-  {{#each hike}}
-  <div class="index-hike-card col-8 col-sm-5 col-md-4 col-lg-3 border border-dark slow-grow hike-card mb-4 p-1 color bg-grey-red">
 
-  	<img class="img-fluid w-100 card-img" src="http://www.hikinginthesmokys.com/smoky_mountains_photos/smokemont-loop/smokemont-thumbnail.JPG" alt="Smokemont thumbnail">
+<p class="notice"></p>
+<p class="alert"></p>
 
-  	<form action="/hikes/30/join" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="dndDISFqlC+Dglhjk3wg0/oh7UJeo+eKqKk/h5ZYA4OvE6dekg5iSPjMgY+/9x5IvSqC3q8M/sIpz3aqlCdgdQ==">
-  		<input type="submit" name="commit" value="Join" class="card-btn btn btn-login-form text-white rounded-0 w-50" data-disable-with="Join">
-    </form>
-  	<div class="col">
-  		<h3><a class="font-w-300 color-burnt-orange" href="/hikes/30">Winter Hike through the smokies...</a></h3>
-  		<h4 class="text-white font-w-100">Smokemont Loop</h4>
+<div class="row text-center">
+  <h1 class="p-2 col text-white display-4 font-w-100">Join a Hike and start your Adventure.</h1>
+</div>
 
-  		<ul class="no-style pl-0 font-w-100 color-slight-pink mb-1">
-  			<li>This is a great trail for a winter hike....</li>
-  			<li class="card-date-color">December 23, 2017</li>
-  		</ul>
-  		<div class="hike-status-banner hike-status-day"><span class="text-white font-w-100">DayHike</span></div>
-  	</div>
-  </div>
-  {{/each}}
-</script>
+<div class="row text-white justify-content-around index-hike-card-container rounded">
+
+	{{> hikes/_hike-card }}
+
+	<!-- <a class="btn btn-sign_in-facebook text-white plan-hike-btn" href="/users/17/hikes/new">+Hike</a> -->
+</div>
