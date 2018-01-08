@@ -1,12 +1,12 @@
 <div class="index-hike-card col-8 col-sm-5 col-md-4 col-lg-3 border border-dark slow-grow hike-card mb-4 p-1 color bg-grey-red">
-			
+
 	<%= trail_image_tag(hike.hiking_trail, 'index') %>
 
 	<%= form_tag join_path(hike) do %>
 		<%= hike_join_status(hike, current_user) %>
 	<% end %>
-		
-	<div class="col">
+
+	<div class="col banner-content">
 		<h3><%= link_to "#{brief_title(hike.title)}", hike_path(hike), :class => "font-w-300 color-burnt-orange" %></h3>
 		<h4 class="text-white font-w-100"><%= "#{hike.hiking_trail.name}" %></h4>
 
@@ -14,6 +14,6 @@
 			<li><%= brief_description(hike.description) %></li>
 			<li class="card-date-color"><%= display_date(hike) %></li>
 		</ul>
-		<%= hike_banner(hike.planned_hikes.last) %>			
 	</div>
+	<%= hike_banner(hike.planned_hikes.last) %>
 </div>

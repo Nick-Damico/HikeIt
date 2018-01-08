@@ -35,8 +35,8 @@ html,body {
 }
 
 select#hike_hiking_trail_attributes_feature_id,
-select#hike_hiking_trail_attributes_area { 
-	width: 100%; 
+select#hike_hiking_trail_attributes_area {
+	width: 100%;
 }
 
 .dark-mtn-blue { background: rgba(#516177, .75); }
@@ -47,7 +47,7 @@ select#hike_hiking_trail_attributes_area {
 
 .logo-text { font-size: 1.5rem;  }
 
-.text-shadow { 
+.text-shadow {
 	text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
              0px 8px 8px rgba(0,0,0,0.3),
              0px 18px 8px rgba(0,0,0,0.3);
@@ -102,9 +102,9 @@ select#hike_hiking_trail_attributes_area {
 
 .btn-color-sign_up:hover { background-color: rgba(87,191,202, .8); }
 
-.btn-color-login:hover { background-color: rgba(255,106,0, .8); } 
+.btn-color-login:hover { background-color: rgba(255,106,0, .8); }
 
-.btn-login-form { 
+.btn-login-form {
 		background-color: rgba(28,193,140, 1);
 		border:2px solid rgb(28,193,140);
 	}
@@ -132,7 +132,7 @@ select#hike_hiking_trail_attributes_area {
 .plan-hike-btn {
 	position: absolute;
 	left: 8px;
-    top: -16px;
+  top: -16px;
 }
 
 .index-hike-card-container {
@@ -151,12 +151,18 @@ select#hike_hiking_trail_attributes_area {
 }
 
 .btn-find-hike {
+	background-color: rgba(255,107,107,.5);
+	background-image:url('btn-find-hike');
 	background: linear-gradient(rgba(85,98,112,.5),rgba(255,107,107,.5)),url('btn-find-hike') no-repeat center center;
 	background-size: cover;
+	transition: all .8s ease-in-out;
 }
-
+.btn-find-hike:active,
+.btn-plan-hike:active {
+	background-color: rgba(255,107,107,.5);
+}
 // =============================================
-//	COMPONENTS 
+//	COMPONENTS
 // =============================================
 .container {
 	-webkit-overflow-scrolling: touch;
@@ -167,7 +173,7 @@ select#hike_hiking_trail_attributes_area {
 	width: 80%;
 }
 
-.sign_in-logo { 
+.sign_in-logo {
 	border: 1px solid white;
 	display: block;
 	font-size: 2rem;
@@ -176,7 +182,7 @@ select#hike_hiking_trail_attributes_area {
 
 .sign_in-form { background-color: rgba(241,187,88, .4) }
 
-.intro-msg { 
+.intro-msg {
 	font-size: 2.2rem;
 	margin-top: 2rem;
  }
@@ -196,29 +202,10 @@ select#hike_hiking_trail_attributes_area {
 	background-size: cover;
 }
 
-.hike-card {
+.index-hike-card {
 	position: relative;
 
-	a:hover,
-	a:visited {
-		 color: #e29c14;
-	}
-
-	.card-img {
-		height: 200px;
-		
-	}
-
-	.card-btn {
-		position: absolute;
-		top: 165px;
-	}
-
-	li.card-date-color {
-		color: $Bermuda;
-	}
-
-	.hike-status-day { 
+	.hike-status-day {
 		background: $Viking;
 		padding-right: 72px;
 		&::after {
@@ -230,46 +217,70 @@ select#hike_hiking_trail_attributes_area {
 		    top: 2px;
 		 }
 		}
+		.hike-status-night {
+			background: $San-Marino;
+		    padding-right: 56px;
+			&::after {
+				content: url('overnight-hike-icon.svg');
+				position: absolute;
+			    z-index: 100;
+			    width: 33px;
+			    right: 30px;
+			    top: 2px;
+			 }
+			}
+			.hike-status-banner {
+				display: inline-block;
+				z-index: 200;
+				font-size: 1.2rem;
+			    padding-top: 8px;
+			    padding-bottom: 8px;
+			    padding-left: 46px;
+			    position: absolute;
+			    left: -27px;
+			    bottom: 5px;
 
-	.hike-status-night { 
-		background: $San-Marino;
-	    padding-right: 56px;
-		&::after {
-			content: url('overnight-hike-icon.svg');
-			position: absolute;
-		    z-index: 100;
-		    width: 33px;
-		    right: 30px;
-		    top: 2px;
-		 }
-		}
+			    &::before {
+			    	content: '';
+				    width: 0;
+				    height: 0;
+				    border-left: 3px solid transparent;
+				    border-right: 24px solid transparent;
+				    border-bottom: 10px solid $Lynch;
+				    position: absolute;
+				    top: -10px;
+				    left: 11px;
+				    -webkit-transform: skew(-10deg);
+				    transform: skew(-67deg);
+			    }
+			}
+}
 
-	.hike-status-banner {
-		display: inline-block;
-		z-index: 200;
-		font-size: 1.2rem;	    	    
-	    padding-top: 8px;
-	    padding-bottom: 8px;
-	    padding-left: 46px;
-	    position: relative;
-	    left: -46px;
-	    top: -2px;
+.hike-card {
+	position: relative;
 
-	    &::before {
-	    	content: '';
-		    width: 0;
-		    height: 0;
-		    border-left: 3px solid transparent;
-		    border-right: 24px solid transparent;
-		    border-bottom: 10px solid $Lynch;
-		    position: absolute;
-		    top: -10px;
-		    left: 11px;
-		    -webkit-transform: skew(-10deg);
-		    transform: skew(-67deg);			
-	    }
+	a:hover,
+	a:visited {
+		 color: #e29c14;
 	}
 
+	.card-img {
+		height: 200px;
+
+	}
+
+	.card-btn {
+		position: absolute;
+		top: 165px;
+	}
+
+	li.card-date-color {
+		color: $Bermuda;
+	}
+}
+
+.banner-content {
+	margin-bottom: 48px;
 }
 
 .show-card {
@@ -292,7 +303,7 @@ select#hike_hiking_trail_attributes_area {
 	background: white;
     padding: 5px 5px 0 5px;
     position: relative;
-    display: inline-block;    
+    display: inline-block;
 }
 
 p.notes-p {
@@ -326,6 +337,9 @@ p.notes-p {
 .joined-btn {
 	padding: 0.395rem;
 }
+.btn:disabled {
+ opacity: 1;
+}
 
 // =============================================
 //	CUSTOM CLASS / HELPERS
@@ -344,7 +358,7 @@ p.notes-p {
 .slow-grow { transition: all .4s ease-in-out;  }
 .slow-grow:hover { transform: scale(1.02); }
 .grow {
- transition: all .2s ease-in-out; 
+ transition: all .2s ease-in-out;
 }
 
 .bg-black { background: black; }
@@ -379,7 +393,7 @@ table.table {
 // =============================================
 
 .notice,
-.alert { 
+.alert {
     color: #1dc18c;
     display: inline-block;
     padding: 5px 10px;
@@ -419,19 +433,19 @@ table.table {
 //	MEDIA QUERIES
 // =============================================
 
-@include media-breakpoint-up(xs) { 
+@include media-breakpoint-up(xs) {
 
 	.about-text-sign_in,
 	.about-text-login {
-		font-size: 1.2rem; 
+		font-size: 1.2rem;
 	}
 
 	.hike-card { margin: 2rem;}
-	
+
  }
 
 // min-width: 576px
-@include media-breakpoint-up(sm) { 
+@include media-breakpoint-up(sm) {
 
 	body { background-position-x: center; }
 	.signed-in-as { display: initial; }
@@ -451,7 +465,7 @@ table.table {
  }
 
  // @media (min-width: 768px)
-@include media-breakpoint-up(md) { 
+@include media-breakpoint-up(md) {
 	.about-text-sign_in { font-size: 1.5rem; }
 
 	.intro-msg { font-size: 3.5rem; }
@@ -469,7 +483,7 @@ table.table {
  }
 
 // @media (min-width: 992px)
-@include media-breakpoint-up(lg) { 
+@include media-breakpoint-up(lg) {
 	.home_container {
 		margin-top: 8rem;
 	}

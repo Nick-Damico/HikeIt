@@ -2,12 +2,17 @@ class HikesController < ApplicationController
 	before_action :find_hike, only: [:show, :edit, :update, :join, :leave, :destroy]
 	before_action :authenticate_user!
 	before_action :authenticate_as_leader, only: [:edit, :update]
+	before_action :set_user, only: [:index]
 
 	def index
 		if params[:user_id] && @hikes = User.find_by(id: params[:user_id]).hikes
 			@hikes
 		else
 			@hikes = Hike.all
+		end
+		respond_to do |format|
+			format.html
+			format.json { render json: @hikes, status: 200 }
 		end
 	end
 
@@ -58,6 +63,7 @@ class HikesController < ApplicationController
 
  	def day_hike
  		@hikes = Hike.get_day_hikes
+
  		render :index
  	end
 
@@ -97,6 +103,10 @@ class HikesController < ApplicationController
 
 		def authenticate_as_leader
   			redirect_to root_path if @hike.leader_id != current_user.id
-  		end
+  	end
+
+		def set_user
+	    cookies = current_user.id
+	  end
 
 end
