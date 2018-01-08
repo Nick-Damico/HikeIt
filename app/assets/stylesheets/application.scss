@@ -202,6 +202,60 @@ select#hike_hiking_trail_attributes_area {
 	background-size: cover;
 }
 
+.index-hike-card {
+	position: relative;
+
+	.hike-status-day {
+		background: $Viking;
+		padding-right: 72px;
+		&::after {
+			content: url('day-hike-icon.svg');
+			position: absolute;
+		    z-index: 100;
+		    width: 33px;
+		    right: 29px;
+		    top: 2px;
+		 }
+		}
+		.hike-status-night {
+			background: $San-Marino;
+		    padding-right: 56px;
+			&::after {
+				content: url('overnight-hike-icon.svg');
+				position: absolute;
+			    z-index: 100;
+			    width: 33px;
+			    right: 30px;
+			    top: 2px;
+			 }
+			}
+			.hike-status-banner {
+				display: inline-block;
+				z-index: 200;
+				font-size: 1.2rem;
+			    padding-top: 8px;
+			    padding-bottom: 8px;
+			    padding-left: 46px;
+			    position: absolute;
+			    left: -27px;
+			    bottom: 5px;
+
+			    &::before {
+			    	content: '';
+				    width: 0;
+				    height: 0;
+				    border-left: 3px solid transparent;
+				    border-right: 24px solid transparent;
+				    border-bottom: 10px solid $Lynch;
+				    position: absolute;
+				    top: -10px;
+				    left: 11px;
+				    -webkit-transform: skew(-10deg);
+				    transform: skew(-67deg);
+			    }
+			}
+}
+
 .hike-card {
 	position: relative;
 
@@ -223,59 +277,10 @@ select#hike_hiking_trail_attributes_area {
 	li.card-date-color {
 		color: $Bermuda;
 	}
+}
 
-	.hike-status-day {
-		background: $Viking;
-		padding-right: 72px;
-		&::after {
-			content: url('day-hike-icon.svg');
-			position: absolute;
-		    z-index: 100;
-		    width: 33px;
-		    right: 29px;
-		    top: 2px;
-		 }
-		}
-
-	.hike-status-night {
-		background: $San-Marino;
-	    padding-right: 56px;
-		&::after {
-			content: url('overnight-hike-icon.svg');
-			position: absolute;
-		    z-index: 100;
-		    width: 33px;
-		    right: 30px;
-		    top: 2px;
-		 }
-		}
-
-	.hike-status-banner {
-		display: inline-block;
-		z-index: 200;
-		font-size: 1.2rem;
-	    padding-top: 8px;
-	    padding-bottom: 8px;
-	    padding-left: 46px;
-	    position: relative;
-	    left: -46px;
-	    top: -2px;
-
-	    &::before {
-	    	content: '';
-		    width: 0;
-		    height: 0;
-		    border-left: 3px solid transparent;
-		    border-right: 24px solid transparent;
-		    border-bottom: 10px solid $Lynch;
-		    position: absolute;
-		    top: -10px;
-		    left: 11px;
-		    -webkit-transform: skew(-10deg);
-		    transform: skew(-67deg);
-	    }
-	}
-
+.banner-content {
+	margin-bottom: 48px;
 }
 
 .show-card {
@@ -331,6 +336,9 @@ p.notes-p {
 
 .joined-btn {
 	padding: 0.395rem;
+}
+.btn:disabled {
+ opacity: 1;
 }
 
 // =============================================
