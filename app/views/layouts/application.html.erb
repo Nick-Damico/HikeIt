@@ -9,14 +9,14 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
+
   </head>
 
   <body class="application-layout">
     <%= render 'layouts/app-navbar' %>
-  
-    
-    <div class="container">
+
+
+    <div id="mainContent" class="container">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
       <%= yield %>
