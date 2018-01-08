@@ -5,6 +5,7 @@
 
 function attachListeners() {
   findHikeListener();
+  planHikeListener();
 }
 
 function buildHikes(data) {
@@ -40,6 +41,32 @@ function findHikeListener() {
   });
 }
 
+function planHikeListener() {
+  // Hijack 'Create Hike' button on form
+  $('#new_hike').on('submit', function(e) {
+    e.preventDefault();
+    let url = this.action;
+    let formData = $(this).serialize();
+    $.ajax({
+      method: this.method,
+      url: url,
+      data: formData,
+      dataType: 'json'
+    })
+    .done(function(data) {
+      let hikes = buildHikes(data);
+      debugger;
+    })
+  });
+  // Capture params
+  // Use params to make a $.post $.ajax 'post' request for a new resource
+  // Get ajax response from Server render :show page in window with new resource
+}
+
+function getHike() {
+
+}
+
 
 
 //////////////////////////////////////////
@@ -57,7 +84,6 @@ function getHikes(target) {
     dataType: 'json'
   }).done(function(data) {
     let hikes = buildHikes(data);
-    console.log(hikes);
     formatForOutput(hikes);
     let html = HandlebarsTemplates['hikes/index']({ hike: hikes })
     $('#mainContent').html(html).fadeIn('slow');
@@ -65,6 +91,10 @@ function getHikes(target) {
   }).fail(function() {
     alert('error')
   });
+}
+
+function createHike(target) {
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -77,11 +107,8 @@ function getHikes(target) {
 
 // With turbolinks the javascript is only loaded once.
 // This will fix issues of javascript not executing on a link_to click || back button click.
-$(document).on('turbolinks:load', function() {
-  attachListeners();
-})
-
-
 $(function() {
-  attachListeners();
-}); // End of iife block
+  $(document).on('turbolinks:load', function() {
+    attachListeners();
+  })
+})
