@@ -6,10 +6,9 @@
     {{else}}
       <img options="{:size=>&quot;280x200&quot;}" class="img-fluid card-img w-100" src="/assets/btn-find-hike-692f3cf34feb3aa5adbcd529f76b0da701819af5d97c0c8ccc1f5569d4b9873a.jpg" alt="Btn find hike">
     {{/if}}
-  	<form action="/hikes/{{id}}/join" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓">
-  		<input type="submit" name="commit" value="Join" class="card-btn btn btn-login-form text-white rounded-0 w-50" data-disable-with="Join">
-    </form>
-  	<div class="col">
+    {{#join_status hikers}}
+    {{/join_status}}
+  	<div class="col banner-content">
   		<h3><a class="font-w-300 color-burnt-orange" href="/hikes/{{id}}">{{title}}</a></h3>
   		<h4 class="text-white font-w-100">{{trail}}</h4>
 
@@ -17,7 +16,8 @@
   			<li>{{description}}</li>
   			<li class="card-date-color">{{hike_date}}</li>
   		</ul>
-  		<!-- <div class="hike-status-banner hike-status-day"><span class="text-white font-w-100">DayHike</span></div> -->
   	</div>
+    {{#hike_banner hike_type}}
+    {{/hike_banner}}
   </div>
   {{/each}}
