@@ -1,3 +1,7 @@
+////////////////////////////////////////////////////////////////////////////////////
+//  /hikes index action code for asynchronous loading.
+////////////////////////////////////////////////////////////////////////////////////
+
 //////////////////////////////////////////
 //  Function Prototypes
 //////////////////////////////////////////
@@ -10,6 +14,10 @@ function Hike(data) {
   this.trail = data.hiking_trail.name;
   this.trail_image = data.hiking_trail.image_url;
   this.hike_type = data.planned_hikes[0].hike_type;
+  this.hikers = [];
+  for (let hike of data.planned_hikes) {
+    this.hikers.push(hike.user_id);
+  }
 }
 
 Hike.prototype.truncateText = function() {
@@ -78,6 +86,7 @@ function getHikes(target) {
     dataType: 'json'
   }).done(function(data) {
     let hikes = buildHikes(data);
+    console.log(hikes);
     formatForOutput(hikes);
     let html = HandlebarsTemplates['hikes/index']({ hike: hikes })
     $('#mainContent').html(html).fadeIn('slow');
@@ -86,6 +95,13 @@ function getHikes(target) {
     alert('error')
   });
 }
+
+////////////////////////////////////////////////////////////////////////////////////
+//  END of /hikes index action code for asynchronous loading.
+////////////////////////////////////////////////////////////////////////////////////
+
+
+
 
 // iife function for DOM ready()
 $(function() {
