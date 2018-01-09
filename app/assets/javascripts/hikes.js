@@ -9,19 +9,17 @@ function attachListeners() {
   showHikeListener();
 }
 
-function buildHikes(data) {
-  let hikes = [];
-  for (let item of data) {
-    let hike = new Hike(item);
-    hikes.push(hike);
-  }
-  return hikes;
-}
-
 function formatForOutput(hikes) {
   for (let hike of hikes) {
     hike.truncateText();
   }
+}
+
+function mainContentAppend(html) {
+  $('#mainContent').fadeOut('slow', function() {
+    $(this).html('');
+    $('#mainContent').html(html).fadeIn('slow');
+  })
 }
 
 
@@ -32,13 +30,8 @@ function formatForOutput(hikes) {
 
 function findHikeListener() {
   $('#findHikeBtn').on('click', function(e) {
-    // Stop default request 'GET', /hikes
     e.preventDefault();
-    $('#mainContent').fadeOut('slow', function() {
-      $(this).html("");
-      getHikes(e.target);
-    });
-
+    getHikes(e.target);
   });
 }
 
@@ -48,15 +41,20 @@ function planHikeListener() {
     e.preventDefault();
     let url = this.action;
     let formData = $(this).serialize();
+
     $.ajax({
       method: this.method,
       url: url,
       data: formData,
       dataType: 'json'
     })
+
     .done(function(data) {
-      let hikes = buildHikes(data);
-      debugger;
+      let hike = new Hike(data);
+      let users = User.buildUsers(data.users);
+      let html = HandlebarsTemplates['hikes/show']({ hike: hike, users: users });
+
+      mainContentAppend(html);
     })
   });
   // Capture params
@@ -68,18 +66,17 @@ function showHikeListener() {
   $('.show-hike-btn').on('click', function(e) {
     e.preventDefault();
     let url = $(e.target).attr('href');
+
     $.ajax({
       method: 'GET',
       url: url,
       dataType: 'json'
+
     }).done(function(data) {
       let hike = new Hike(data);
-      let html = HandlebarsTemplates['hikes/show']({ hike: hike })
-      $('#mainContent').fadeOut('slow', function() {
-        $(this).html('');
-        $('#mainContent').html(html).fadeIn('slow');
-      })
-
+      let users = User.buildUsers(data.users);
+      let html = HandlebarsTemplates['hikes/show']({ hike: hike, users: users });
+      mainContentAppend(html);
     });
   });
 }
@@ -99,20 +96,37 @@ function getHikes(target) {
     method: formMethod,
     url: formUrl,
     dataType: 'json'
+
   }).done(function(data) {
-    let hikes = buildHikes(data);
+    let hikes = Hike.buildHikes(data);
     formatForOutput(hikes);
     let html = HandlebarsTemplates['hikes/index']({ hike: hikes })
-    $('#mainContent').html(html).fadeIn('slow');
-
+    mainContentAppend(html);
+    dynamicShowEvent();
   }).fail(function() {
     alert('error')
   });
 }
 
-function createHike(target) {
+function dynamicShowEvent() {
+  $(document).on("click", '.show-hike-btn', function(e) {
+      e.preventDefault();
+      let url = $(e.target).attr('href');
 
+      $.ajax({
+        method: 'GET',
+        url: url,
+        dataType: 'json'
+
+      }).done(function(data) {
+        let hike = new Hike(data);
+        let users = User.buildUsers(data.users);
+        let html = HandlebarsTemplates['hikes/show']({ hike: hike, users: users });
+        mainContentAppend(html);
+      });
+  });
 }
+
 
 ////////////////////////////////////////////////////////////////////////////////////
 //  END of /hikes index action code for asynchronous loading.
