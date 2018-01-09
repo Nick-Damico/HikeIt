@@ -31,6 +31,15 @@ Hike.prototype.truncateText = function() {
   this.description += '...';
 }
 
+Hike.buildHikes = function(data) {
+  let hikes = [];
+  for (let item of data) {
+    let hike = new Hike(item);
+    hikes.push(hike);
+  }
+  return hikes;
+}
+
 
 //////////////////////////////////////////
 //  User Constructor & Prototype Methods
