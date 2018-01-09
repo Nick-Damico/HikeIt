@@ -6,6 +6,7 @@
 function attachListeners() {
   findHikeListener();
   planHikeListener();
+  showHikeListener();
 }
 
 function buildHikes(data) {
@@ -63,8 +64,24 @@ function planHikeListener() {
   // Get ajax response from Server render :show page in window with new resource
 }
 
-function getHike() {
+function showHikeListener() {
+  $('.show-hike-btn').on('click', function(e) {
+    e.preventDefault();
+    let url = $(e.target).attr('href');
+    $.ajax({
+      method: 'GET',
+      url: url,
+      dataType: 'json'
+    }).done(function(data) {
+      let hike = new Hike(data);
+      let html = HandlebarsTemplates['hikes/show']({ hike: hike })
+      $('#mainContent').fadeOut('slow', function() {
+        $(this).html('');
+        $('#mainContent').html(html).fadeIn('slow');
+      })
 
+    });
+  });
 }
 
 
