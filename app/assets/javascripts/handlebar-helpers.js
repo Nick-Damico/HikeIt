@@ -1,6 +1,15 @@
 ////////////////////////////////////////////////////////////////////////////////////
 //  Handlebars.js Helper Methods
 ////////////////////////////////////////////////////////////////////////////////////
+
+Handlebars.registerHelper('formatted_date', function(hike, options) {
+  return hike.formatDate();
+});
+
+Handlebars.registerHelper('formatted_time', function(hike, options) {
+  return hike.formatTime();
+});
+
 Handlebars.registerHelper('hike_banner', function(type, options) {
     let html = '';
     if (type === 'day_hike') {
