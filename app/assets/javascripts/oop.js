@@ -26,3 +26,8 @@ Hike.prototype.truncateText = function() {
   );
   this.description += '...';
 }
+
+function User(data) {
+  this.id = data.id;
+  this.email = data.email;
+}
