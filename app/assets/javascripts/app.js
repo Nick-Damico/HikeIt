@@ -36,49 +36,31 @@ function findHikeListener() {
 }
 
 function planHikeListener() {
-  // Hijack 'Create Hike' button on form
+  // Hijack 'Create Hike' button on form submission
   $('#new_hike').on('submit', function(e) {
     e.preventDefault();
     let url = this.action;
     let formData = $(this).serialize();
-
-    $.ajax({
-      method: this.method,
-      url: url,
-      data: formData,
-      dataType: 'json'
-    })
-
-    .done(function(data) {
-      let hike = new Hike(data);
-      let users = User.buildUsers(data.users);
-      let html = HandlebarsTemplates['hikes/show']({ hike: hike, users: users });
-
-      mainContentAppend(html);
-    })
+    request(url, this.method, formData);
   });
-  // Capture params
-  // Use params to make a $.post $.ajax 'post' request for a new resource
-  // Get ajax response from Server render :show page in window with new resource
 }
 
 function showHikeListener() {
   $('.show-hike-btn').on('click', function(e) {
     e.preventDefault();
-    let url = $(e.target).attr('href');
-
-    $.ajax({
-      method: 'GET',
-      url: url,
-      dataType: 'json'
-
-    }).done(function(data) {
-      let hike = new Hike(data);
-      let users = User.buildUsers(data.users);
-      let html = HandlebarsTemplates['hikes/show']({ hike: hike, users: users });
-      mainContentAppend(html);
-    });
+    let formData = $(this).serialize();
+    let url = $(event.target).attr('href');
+    request(url, 'GET', formData);
   });
+}
+
+// Attaches Listeners to dynamically rendered elements from AJAX and jQuery requests
+function dynamicShowEvent() {
+  $(document).on("click", '.show-hike-btn', function(e) {
+      e.preventDefault();
+      let url = $(event.target).attr('href');
+      request(url, 'GET', "");
+    });
 }
 
 
@@ -108,24 +90,22 @@ function getHikes(target) {
   });
 }
 
-function dynamicShowEvent() {
-  $(document).on("click", '.show-hike-btn', function(e) {
-      e.preventDefault();
-      let url = $(e.target).attr('href');
 
-      $.ajax({
-        method: 'GET',
-        url: url,
-        dataType: 'json'
-
-      }).done(function(data) {
-        let hike = new Hike(data);
-        let users = User.buildUsers(data.users);
-        let html = HandlebarsTemplates['hikes/show']({ hike: hike, users: users });
-        mainContentAppend(html);
-      });
+function request(url, method, data) {
+  $.ajax({
+    method: method,
+    url: url,
+    dataType: 'json',
+    data: data
+  })
+  .done(function(data) {
+    let hike = new Hike(data);
+    let users = User.buildUsers(data.users);
+    let html = HandlebarsTemplates['hikes/show']({ hike: hike, users: users });
+    mainContentAppend(html);
   });
 }
+
 
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -133,7 +113,7 @@ function dynamicShowEvent() {
 ////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////
-// iife function for DOM ready()
+// iife function
 //////////////////////////////////////////
 
 // With turbolinks the javascript is only loaded once.
