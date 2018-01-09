@@ -19,11 +19,14 @@
 
   		<h4 class="notes-header font-w-100 color-grey-red">Notes:</h4><p class="notes-p">{{hike.notes}}</p>
 
-  		<!-- <ul class="no-style p-0">
+  		<ul class="no-style p-0">
   			<h3><u>Hikers Joined</u></h3>
-  			<li><a href="/users/4">kris@example.com</a></li>
+        {{#each users}}
+  			   <li><a href="/users/{{id}}">{{email}}</a></li>
+        {{/each}}
   		</ul>
 
+      <!--
   		<form action="/hikes/30/join" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓">
           <input type="hidden" name="authenticity_token" value="7gdxiIBdTDQXMho4rb72bvBinDkdh7p+l50rUo/wzmBQLSVgmz4d4n+cKG8qtDHkSDWPHDOecPQMcIGRKZW+Tg==">
   		    <input type="submit" name="commit" value="Join" class="btn btn-login-form text-white" data-disable-with="Join">
