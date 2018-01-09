@@ -28,7 +28,10 @@ class HikesController < ApplicationController
 		@hike = Hike.new(hike_params)
 		if @hike.save
 			@hike.planned_hikes_attributes=(params[:hike][:planned_hikes_attributes])
-			redirect_to hike_path(@hike.id), notice: "Hike successfully created!"
+			respond_to do |format|
+				format.html { redirect_to hike_path(@hike.id), notice: "Hike successfully created!" }
+				format.json { render json: @hike }
+			end
 		else
 			render :new
 		end
@@ -41,6 +44,10 @@ class HikesController < ApplicationController
 			if @hike.nil?
 				redirect_to user_hikes_path(@user), alert: "Hike not found"
 			end
+		end
+		respond_to do |format|
+			format.html
+			format.json { render json: @hike, status: 200 }
 		end
 	end
 
