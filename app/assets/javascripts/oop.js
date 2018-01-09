@@ -12,8 +12,8 @@ function Hike(data) {
   this.title = data.title;
   this.description = data.description;
   this.notes = data.notes;
-  this.date = moment(data.hike_date).format("MMM D, YYYY");
-  this.time = moment(data.hike_time).format("h:mm:ss a");
+  this.date = data.hike_date;
+  this.time = data.hike_time;
   this.trail_id = data.hiking_trail.id;
   this.trail = data.hiking_trail.name;
   this.trail_image = data.hiking_trail.image_url;
@@ -25,12 +25,6 @@ function Hike(data) {
   }
 }
 
-Hike.prototype.truncateText = function() {
-  this.description = this.description.slice(0,45
-  );
-  this.description += '...';
-}
-
 Hike.buildHikes = function(data) {
   let hikes = [];
   for (let item of data) {
@@ -39,6 +33,21 @@ Hike.buildHikes = function(data) {
   }
   return hikes;
 }
+
+Hike.prototype.formatDate = function() {
+  return moment(this.date).format("MMM D, YYYY");
+}
+
+Hike.prototype.formatTime = function() {
+  return moment(this.time).format("h:mm a");
+}
+
+Hike.prototype.truncateText = function() {
+  this.description = this.description.slice(0,45
+  );
+  this.description += '...';
+}
+
 
 
 //////////////////////////////////////////
