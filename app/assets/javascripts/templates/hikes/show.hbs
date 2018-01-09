@@ -1,0 +1,48 @@
+<p class="notice"></p>
+<p class="alert"></p>
+
+<div class="row mb-3">
+
+  <div class="col-12 col-md-6 hike-show-card bg-white p-4 text-center border border-right-0 border-white">
+
+    {{#if hike.trail_image}}
+      <img class="img-thumbnail" src="{{hike.trail_image}}" alt="{{hike.trail}}">
+    {{else}}
+
+    {{/if}}
+
+  		<h3 class="font-w-300 color-burnt-orange">{{hike.title}}</h3>
+  		<h4 class="font-w-100 color-grey-red mb-0"><a href="/hiking_trails/{{hike.trail_id}}">{{hike.trail}}</a></h4>
+  		<p class="font-w-100 color-grey-red">( {{hike.features}} )</p>
+  		<span class="font-w-100 color-slight-pink">{{hike.date}} | {{hike.time}}</span>
+  		<p>{{hike.description}}</p>
+
+  		<h4 class="notes-header font-w-100 color-grey-red">Notes:</h4><p class="notes-p">{{hike.notes}}</p>
+
+  		<!-- <ul class="no-style p-0">
+  			<h3><u>Hikers Joined</u></h3>
+  			<li><a href="/users/4">kris@example.com</a></li>
+  		</ul>
+
+  		<form action="/hikes/30/join" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓">
+          <input type="hidden" name="authenticity_token" value="7gdxiIBdTDQXMho4rb72bvBinDkdh7p+l50rUo/wzmBQLSVgmz4d4n+cKG8qtDHkSDWPHDOecPQMcIGRKZW+Tg==">
+  		    <input type="submit" name="commit" value="Join" class="btn btn-login-form text-white" data-disable-with="Join">
+      </form>
+
+     <form action="/hikes/30/leave" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓">
+       <input type="hidden" name="authenticity_token" value="DRhIETx6cLc0I+1AAbgrI9TGGDzxDLrQ1fnMuUBzi4DO/K15zBN3PNbFPs037Libk7VyVTp9GmTwY2Lcs3iVCg==">
+     </form> -->
+
+  	</div>
+
+    <div class="d-flex flex-column justify-content-center align-items-center col-12 col-md-6 show-card text-center p-4 border border-left-0 border-white">
+  		<ul class="no-style p-0">
+  			<h2 class="text-white font-w-100">Your Upcoming Hikes</h2>
+
+  				<li class="color-slight-pink p-2 mb-1"><a class="color-burnt-orange mb-1" href="/hikes/87">Amazing Hike</a> | February 22, 2018</li><li class="color-slight-pink p-2 mb-1"><a class="color-burnt-orange mb-1" href="/hikes/88">Sunday night hike</a> | January 08, 2018</li>
+
+  			<a class="btn btn-login-form text-white mt-3" href="/hikes">All Hikes</a>
+  		</ul>
+
+  	</div>
+</div>
