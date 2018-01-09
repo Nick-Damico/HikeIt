@@ -14,7 +14,7 @@
   		<h3 class="font-w-300 color-burnt-orange">{{hike.title}}</h3>
   		<h4 class="font-w-100 color-grey-red mb-0"><a href="/hiking_trails/{{hike.trail_id}}">{{hike.trail}}</a></h4>
   		<p class="font-w-100 color-grey-red">( {{hike.features}} )</p>
-  		<span class="font-w-100 color-slight-pink">{{hike.date}} | {{hike.time}}</span>
+  		<span class="font-w-100 color-slight-pink">{{#formatted_date hike}}{{/formatted_date}} | {{#formatted_time hike}}{{/formatted_time}}</span>
   		<p>{{hike.description}}</p>
 
   		<h4 class="notes-header font-w-100 color-grey-red">Notes:</h4><p class="notes-p">{{hike.notes}}</p>

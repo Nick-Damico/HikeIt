@@ -1,23 +1,23 @@
 
   {{#each hike}}
-  <div class="index-hike-card col-8 col-sm-5 col-md-4 col-lg-3 border border-dark slow-grow hike-card mb-4 p-1 color bg-grey-red">
-    {{#if trail_image}}
-      <img class="img-fluid w-100 card-img" src="{{trail_image}}" alt="{{trail}} thumbnail">
-    {{else}}
-      <img options="{:size=>&quot;280x200&quot;}" class="img-fluid card-img w-100" src="/assets/btn-find-hike-692f3cf34feb3aa5adbcd529f76b0da701819af5d97c0c8ccc1f5569d4b9873a.jpg" alt="Btn find hike">
-    {{/if}}
-    {{#join_status hikers}}
-    {{/join_status}}
-  	<div class="col banner-content">
-  		<h3><a class="font-w-300 color-burnt-orange show-hike-btn" href="/hikes/{{id}}">{{title}}</a></h3>
-  		<h4 class="text-white font-w-100">{{trail}}</h4>
+    <div class="index-hike-card col-8 col-sm-5 col-md-4 col-lg-3 border border-dark slow-grow hike-card mb-4 p-1 color bg-grey-red">
+      {{#if trail_image}}
+        <img class="img-fluid w-100 card-img" src="{{trail_image}}" alt="{{trail}} thumbnail">
+      {{else}}
+        <img options="{:size=>&quot;280x200&quot;}" class="img-fluid card-img w-100" src="/assets/btn-find-hike-692f3cf34feb3aa5adbcd529f76b0da701819af5d97c0c8ccc1f5569d4b9873a.jpg" alt="Btn find hike">
+      {{/if}}
+      {{#join_status hikers}}
+      {{/join_status}}
+    	<div class="col banner-content">
+    		<h3><a class="font-w-300 color-burnt-orange show-hike-btn" href="/hikes/{{id}}">{{title}}</a></h3>
+    		<h4 class="text-white font-w-100">{{trail}}</h4>
 
-  		<ul class="no-style pl-0 font-w-100 color-slight-pink mb-1">
-  			<li>{{description}}</li>
-  			<li class="card-date-color">{{date}}</li>
-  		</ul>
-  	</div>
-    {{#hike_banner hike_type}}
-    {{/hike_banner}}
-  </div>
+    		<ul class="no-style pl-0 font-w-100 color-slight-pink mb-1">
+    			<li>{{description}}</li>
+    			<li class="card-date-color">{{#formatted_date this}}{{/formatted_date}}</li>
+    		</ul>
+    	</div>
+      {{#hike_banner hike_type}}
+      {{/hike_banner}}
+    </div>
   {{/each}}
