@@ -45,6 +45,10 @@ class HikesController < ApplicationController
 				redirect_to user_hikes_path(@user), alert: "Hike not found"
 			end
 		end
+		respond_to do |format|
+			format.html
+			format.json { render json: @hike, status: 200 }
+		end
 	end
 
 	def edit
