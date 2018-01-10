@@ -33,3 +33,7 @@ Handlebars.registerHelper('join_status', function(hikers, hike_id, options) {
     }
     return new Handlebars.SafeString(html);
 });
+
+Handlebars.registerHelper('current_user', function() {
+  return parseInt(document.cookie.replace('user_id=',''));
+})
