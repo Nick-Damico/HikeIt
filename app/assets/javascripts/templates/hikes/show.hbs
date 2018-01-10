@@ -26,25 +26,12 @@
         {{/each}}
   		</ul>
 
-      <!--
-  		<form action="/hikes/30/join" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓">
-          <input type="hidden" name="authenticity_token" value="7gdxiIBdTDQXMho4rb72bvBinDkdh7p+l50rUo/wzmBQLSVgmz4d4n+cKG8qtDHkSDWPHDOecPQMcIGRKZW+Tg==">
-  		    <input type="submit" name="commit" value="Join" class="btn btn-login-form text-white" data-disable-with="Join">
-      </form>
-
-     <form action="/hikes/30/leave" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓">
-       <input type="hidden" name="authenticity_token" value="DRhIETx6cLc0I+1AAbgrI9TGGDzxDLrQ1fnMuUBzi4DO/K15zBN3PNbFPs037Libk7VyVTp9GmTwY2Lcs3iVCg==">
-     </form> -->
-
   	</div>
 
     <div class="d-flex flex-column justify-content-center align-items-center col-12 col-md-6 show-card text-center p-4 border border-left-0 border-white">
-  		<ul class="no-style p-0">
-  			<h2 class="text-white font-w-100">Your Upcoming Hikes</h2>
-
-  				<li class="color-slight-pink p-2 mb-1"><a class="color-burnt-orange mb-1" href="/hikes/87">Amazing Hike</a> | February 22, 2018</li><li class="color-slight-pink p-2 mb-1"><a class="color-burnt-orange mb-1" href="/hikes/88">Sunday night hike</a> | January 08, 2018</li>
-
-  			<a class="btn btn-login-form text-white mt-3" href="/hikes">All Hikes</a>
+      <h2 class="text-white font-w-100">Your Upcoming Hikes</h2>
+  		<ul id="upcomingHikes" class="no-style p-0">
+  			<a class="btn btn-login-form text-white mt-3 all-hikes" href="/users/{{#current_user}}{{/current_user}}/hikes">All Hikes</a>
   		</ul>
 
   	</div>
