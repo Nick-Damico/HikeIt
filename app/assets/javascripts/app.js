@@ -7,6 +7,7 @@ function attachListeners() {
   findHikeListener();
   planHikeListener();
   showHikeListener();
+  hikesLinkListener();
 }
 
 function formatForOutput(hikes) {
@@ -31,7 +32,19 @@ function mainContentAppend(html) {
 function findHikeListener() {
   $('#findHikeBtn').on('click', function(e) {
     e.preventDefault();
-    getHikes(e.target);
+    let $target = $(e.target);
+    let $parent = $target.parent('form');
+    let formUrl = $parent.attr('action');
+    let formMethod = $parent.attr('method');
+    getHikes(formUrl, formMethod)
+  });
+}
+
+function hikesLinkListener() {
+  $('#hikesLink').on('click', function(e) {
+    e.preventDefault();
+    let url = $(e.target).attr('href');
+    getHikes(url, 'GET')
   });
 }
 
@@ -69,14 +82,11 @@ function dynamicShowEvent() {
 //  AJAX Requests
 //////////////////////////////////////////
 
-function getHikes(target) {
-  let $target = $(target);
-  let $parent = $target.parent('form');
-  let formUrl = $parent.attr('action');
-  let formMethod = $parent.attr('method');
+function getHikes(url, methodType) {
+
   $.ajax({
-    method: formMethod,
-    url: formUrl,
+    method: methodType,
+    url: url,
     dataType: 'json'
 
   }).done(function(data) {
