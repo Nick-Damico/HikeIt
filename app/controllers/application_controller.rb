@@ -1,10 +1,11 @@
 class ApplicationController < ActionController::Base
-	protect_from_forgery with: :exception  
+	protect_from_forgery with: :exception
 	layout :layout_by_resource
 	before_action :redirect_to_home
+	before_action :set_user, only: [:redirect_to_home]
 
-  	def after_sign_in_path_for(resource)
-  		home_path || request.env['omniauth.origin'] 
+  def after_sign_in_path_for(resource)
+  	home_path || request.env['omniauth.origin']
 	end
 
 	private
@@ -15,11 +16,15 @@ class ApplicationController < ActionController::Base
 		else
 		  "application"
 		end
-		
+
 	end
 
 	def redirect_to_home
 		redirect_to home_url if params[:action] == 'landing' && current_user
+	end
+
+	def set_user
+		cookies = current_user.id
 	end
 
 end
