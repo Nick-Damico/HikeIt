@@ -67,15 +67,6 @@ function showHikeListener() {
   });
 }
 
-// Attaches Listeners to dynamically rendered elements from AJAX and jQuery requests
-function dynamicShowEvent() {
-  $(document).on("click", '.show-hike-btn', function(e) {
-      e.preventDefault();
-      let url = $(event.target).attr('href');
-      request(url, 'GET', "");
-    });
-}
-
 
 
 //////////////////////////////////////////
@@ -113,6 +104,7 @@ function request(url, method, data) {
     let users = User.buildUsers(data.users);
     let html = HandlebarsTemplates['hikes/show']({ hike: hike, users: users });
     mainContentAppend(html);
+    dynamicUserHikesEvent();
   });
 }
 
@@ -133,3 +125,33 @@ $(function() {
     attachListeners();
   })
 })
+
+// Attaches Listeners to dynamically rendered elements from AJAX and jQuery requests
+function dynamicShowEvent() {
+  $(document).on("click", '.show-hike-btn', function(e) {
+      e.preventDefault();
+      let url = $(event.target).attr('href');
+      request(url, 'GET', "");
+    });
+}
+
+function dynamicUserHikesEvent() {
+  $(document).on("click", '.all-hikes', function(e) {
+    e.preventDefault();
+    let url =$(e.target).attr('href');
+    $.ajax({
+      method: 'GET',
+      url: url,
+      dataType: 'json'
+    })
+    .done(function(data) {
+      let hikes = Hike.buildHikes(data);
+      let html = HandlebarsTemplates["hikes/user-hikes-li"]({ hikes: hikes });
+      $('ul#upcomingHikes').fadeOut('slow', function() {
+        $(this).html('');
+        $(this).html(html);
+        $(this).fadeIn('slow');
+      })
+    });
+  });
+}
