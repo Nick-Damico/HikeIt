@@ -42,6 +42,7 @@ gem 'jquery-rails', '~> 4.3.0'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'handlebars_assets', '~> 0.23.0'
 gem 'momentjs-rails', '~> 2.17'
+gem 'rails_12factor'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
