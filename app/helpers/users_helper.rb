@@ -1,11 +1,11 @@
 module UsersHelper
 
 	def display_profile_img(user)
-		# if user.profile_image.nil? || user.profile_image.empty?
+		if user.profile_image.nil? || user.profile_image.empty?
 			image_tag "profile-temp.svg", :class => "profile_pic rounded-circle img-thumbnail"
-	 	# else
-		# 	image_tag "#{user.profile_image}", :class => "profile_pic rounded-circle img-thumbnail"
-		# end
+	 	else
+			image_tag "#{JSON.parse(user.profile_image).first}", :class => "profile_pic rounded-circle img-thumbnail"
+		end
 	end
 
 	def hikes_joined(user,hikes)

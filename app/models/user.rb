@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 	has_many :planned_hikes
 	has_many :hikes, through: :planned_hikes
-	
+
 	validates :bio, length: { maximum: 160 }
 	validates :location, length: { maximum: 21 }
 
@@ -23,12 +23,12 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     user = where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.profile_image = auth.info.image,       
+      user.profile_image = auth.info.image,
       user.password = Devise.friendly_token[0,20]
-    end    
+    end
     user.email = set_email(auth)
     user.save
     user
   end
-  
+
 end
