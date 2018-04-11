@@ -13,8 +13,8 @@ class HikingTrail < ApplicationRecord
 	scope :difficulty_strenous, -> { where('difficulty_rating > ?', 10) }
 
 	scope :distance_short, -> { where('distance < ?',5) }
-	scope :distance_medium, -> { where('distance > ? AND distance < ?',4,10) }
-	scope :distance_long, -> { where('distance > ? AND distance <= ?',9, 15) }
+	scope :distance_medium, -> { where('distance >= ? AND distance < ?',5,10) }
+	scope :distance_long, -> { where('distance >= ? AND distance <= ?',10, 15) }
 	scope :distance_extreme, -> { where('distance > ?',15) }
 
 	TRAIL_AREAS = [
