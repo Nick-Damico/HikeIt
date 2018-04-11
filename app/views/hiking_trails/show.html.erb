@@ -3,16 +3,17 @@
 <h2 class="font-w-100 text-white text-center">Hiking Trail</h2>
 
 <div class="row mb-3">
-	
+
 	<!-- Show card for Hike -->
 	<div class="col-12 col-md-6 hike-show-card bg-white p-4 text-center border border-right-0 border-white">
 
-		<img class="img-thumbnail" src="<%= @hiking_trail.image_url if @hiking_trail.image_url %>" />
+		<img class="img-thumbnail" src="<%= @hiking_trail.image_url ? @hiking_trail.image_url : image_url("btn-find-hike.jpg") %>" />
 		<h2 class="font-w-100"><%= @hiking_trail.name %></h2>
 		<%= render 'trail-table', trail: @hiking_trail %>
 
 		<span class="font-w-100 color-slight-pink">( More info at HikingSmokies.com )</span>
-		<%= button_to "More Info", @hiking_trail.url, :class => "btn btn-color-sign_up text-white mt-3" %>
+		<%= display_more_info @hiking_trail %>
+
 	</div>
 
 	<!-- Card on right with list of upcoming hikes -->
@@ -21,8 +22,8 @@
 			<h2 class="text-white font-w-100">Trails in the Area</h2>
 
 			<%= render partial: 'trail-li', collection: HikingTrail.by_area(trail_area(@hiking_trail)).limit(5), as: :ht %>
-			
+
 		</ul>
-		<%= link_to "All Trails", hiking_trails_path, :class => "btn btn-login-form text-white mt-3" %>	
+		<%= link_to "All Trails", hiking_trails_path, :class => "btn btn-login-form text-white mt-3" %>
 	</div> <!-- End of div.show-card -->
 </div> <!-- End of div.row -->
