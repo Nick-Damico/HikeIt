@@ -7,7 +7,7 @@
 	<!-- Show card for Hike -->
 	<div class="col-12 col-md-6 hike-show-card bg-white p-4 text-center border border-right-0 border-white">
 
-		<img class="img-thumbnail" src="<%= @hiking_trail.image_url ? @hiking_trail.image_url : image_url("btn-find-hike.jpg") %>" />
+		<img class="img-thumbnail" src="<%= @hiking_trail.image_url ? @hiking_trail.image_url : image_url("default_trail.jpg") %>" />
 		<h2 class="font-w-100"><%= @hiking_trail.name %></h2>
 		<%= render 'trail-table', trail: @hiking_trail %>
 
