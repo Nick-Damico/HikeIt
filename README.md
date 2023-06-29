@@ -1,28 +1,61 @@
-# HikeIt ##
+# HikeIt
 
-HikeIt is a Rails social hiking application that allows a User to plan a hiking trip or join other users on their hiking trips, it also includes a database of information on all hikes in the GSMNP.
+## Project Overview
+HikeIt is a Ruby on Rails application designed to help outdoor enthusiasts find and organize hikes with friends, both old and new, within the GSM National Park. Whether you're a seasoned hiker or a beginner, HikeIt provides a platform to discover exciting trails, connect with fellow hikers, and plan memorable hiking adventures in the beautiful surroundings of the GSM National Park.
 
-## Usage ##
+## Key Features
+- Explore a wide range of hiking trails within the GSM National Park.
+- Create and manage personal hiking profiles.
+- Connect with other hikers and join group hikes for a shared hiking experience.
+- Organize and schedule your own hikes, inviting friends or welcoming new hikers to join.
 
-After cloning and ```following Installation steps below``` use command ```rails s``` to start a server and type into your browser ```localhost:3000```
-Sign up with a valid email and password or Facebook. Once logged in choose to 'plan hike' or 'find hike'. Plan hike will present you with a form to create a new hike in the database once submitted. Clicking on the 'find hike' button from the home page or hikes in the navbar will display all joinable hikes in the database. Click to find out more information about the hike or click directly on the 'join' button to be added as a hiker for that upcoming event.
+## Technologies Used
+- Ruby on Rails framework for rapid application development.
+- Database management with MySQL to store user profiles, hike information, and user-generated content.
+- Authentication and authorization systems to ensure secure user access and privacy.
 
-## Installation ##
+## Installation
+1. Clone the repository
+`git clone https://github.com/Nick-Damico/HikeIt.git`
 
-```shell
-git clone https://github.com/Nick-Damico/HikeIt.git
-cd HikeIt
-bundle install
-rails db:migrate
-# Make sure to populate database with hiking trails, use following command #
-rails db:seed
-rails s
-```
+2. Navigate to the project directory
+`cd HikeIt`
 
-## Contributing ##
+3. Install the required dependencies
+`bundle install`
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/Nick-Damico/HikeIt. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](https://github.com/Nick-Damico/HikeIt/blob/master/CONTRIBUTING.md) code of conduct.
+4. Set up the database
+`rails db:migrate`
 
-## License ##
+5. Populate the database with hiking trails using the following command to ensure the database is populated
+`rails db:seed`
 
-The gem is available as open source under the terms of the [MIT License](https://github.com/Nick-Damico/HikeIt/blob/master/LICENSE).
+6. Start the server
+`rails s`
+
+## Usage
+
+1. After cloning the repository and following the installation steps below, use the command `rails s` to start the server.
+2. Open your web browser and navigate to `localhost:3000`.
+3. Sign up using a valid email and password, or sign up with Facebook.
+4. Once logged in, you have two options: 'Plan Hike' or 'Find Hike'.
+   - To plan a hike, click on 'Plan Hike' and fill out the form to create a new hike in the database. Submit the form once completed.
+   - To find a hike, click on 'Find Hike'. This will display all joinable hikes in the database.
+5. To view more information about a specific hike, click on the hike's details. You can find additional information such as the trail route, difficulty level, and any notes from the organizer.
+6. To join a hike, simply click on the 'Join' button for the desired upcoming event. This will add you as a participant in that hike.
+
+Enjoy discovering and organizing exciting hiking adventures with HikeIt!
+
+## Screenshot
+![HikeIt App](https://github.com/Nick-Damico/HikeIt/assets/19657584/35c2709c-ed2f-41ed-9de3-888dd89da65e)
+
+## Future Improvements
+- Rate Hikes by difficulty level, interest, and location.
+- Utilize interactive maps, trail descriptions, and user reviews to make informed hiking choices.
+- Expand to other National Parks.
+- Stay up-to-date with the latest hiking events, news, and tips from the GSM National Park community.
+
+## Acknowledgments (Optional)
+[HikeIt is a personal project created by [Nicholas D'Amico]. Special thanks [Flatiron Bootcamp.] for giving me the skills to build this project.
+
+The app is available as open source under the terms of the [MIT License](https://github.com/Nick-Damico/HikeIt/blob/master/LICENSE).
