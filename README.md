@@ -3,6 +3,9 @@
 ## Project Overview
 HikeIt is a Ruby on Rails application designed to help outdoor enthusiasts find and organize hikes with friends, both old and new, within the GSM National Park. Whether you're a seasoned hiker or a beginner, HikeIt provides a platform to discover exciting trails, connect with fellow hikers, and plan memorable hiking adventures in the beautiful surroundings of the GSM National Park.
 
+## Screenshot
+![HikeIt App](https://github.com/Nick-Damico/HikeIt/assets/19657584/35c2709c-ed2f-41ed-9de3-888dd89da65e)
+
 ## Key Features
 - Explore a wide range of hiking trails within the GSM National Park.
 - Create and manage personal hiking profiles.
@@ -45,9 +48,6 @@ HikeIt is a Ruby on Rails application designed to help outdoor enthusiasts find 
 6. To join a hike, simply click on the 'Join' button for the desired upcoming event. This will add you as a participant in that hike.
 
 Enjoy discovering and organizing exciting hiking adventures with HikeIt!
-
-## Screenshot
-![HikeIt App](https://github.com/Nick-Damico/HikeIt/assets/19657584/35c2709c-ed2f-41ed-9de3-888dd89da65e)
 
 ## Future Improvements
 - Rate Hikes by difficulty level, interest, and location.
